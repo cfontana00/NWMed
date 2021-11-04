@@ -256,7 +256,7 @@ MIT_INPUT_ABORT_ON_ERRORS=${RT_MIT_INPUT_ABORT_ON_ERRORS:-true}	# Input abort on
 MIT_MAIL_ADDRESS="service.med.ogs@ogs.trieste.it"		# OGS Address used for notification
 
 MIT_REPORT_NOTIFY_ADDRESSES="service.med.ogs@ogs.trieste.it"
-MIT_NOTIFY_ADDRESSES="myocean-support@list.cineca.it"
+MIT_NOTIFY_ADDRESSES="a.innocenti@lamma.toscana.it"
 MIT_REPORT_ADDRESSES="myocean-support@list.cineca.it, service.med.ogs@ogs.trieste.it"
 MIT_MONITORING_ADDRESSES="service.med@bo.ingv.it, myocean-support@LIST.CINECA.IT, service.med.ogs@ogs.trieste.it"
 MIT_DEBUG_ADDRESSES="myocean-support@LIST.CINECA.IT"
