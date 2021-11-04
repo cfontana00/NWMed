@@ -38,7 +38,7 @@ typeset -i exit_code=0
        PRODUCT_TABLE=$MIT_WRKDIR/BC_IC/product_table.txt
           MODEL_VARS=$MIT_WRKDIR/bfm_state_vars.txt
 
-           RIVERDATA=$MIT_BC_IC_FROM_OGSTM_DIR/static-data/masks/CADEAU/discharges_CADEAU_N2.xlsx
+           RIVERDATA=$MIT_BC_IC_FROM_OGSTM_DIR/static-data/masks/NWMED/discharges_NWMED.xlsx
        RIVERMETEODIR=$MIT_WRKDIR
 
 export RIVERDATA RIVERMETEODIR
@@ -58,8 +58,8 @@ done
 ### Step 0.  GET MASK INFO  #####################################
 
 BATHY=$MIT_WRKDIR/BC_IC/bathy.bin
-mit_prex_or_die "gzip -dc $MIT_ETCDIR/static-data/ADRI_128/bathy.gz > $BATHY"
-mit_prex_or_die "python $MIT_BC_IC_FROM_OGSTM_DIR/static-data/masks/CADEAU/maskgen.py -b $BATHY -o $MASKFILE"
+mit_prex_or_die "gzip -dc $MIT_ETCDIR/static-data/NWMED/bathy.gz > $BATHY"
+mit_prex_or_die "python $MIT_BC_IC_FROM_OGSTM_DIR/static-data/masks/NWMED/maskgen.py -b $BATHY -o $MASKFILE"
 
 mit_prex_or_die "python $MIT_BC_IC_FROM_OGSTM_DIR/maskgen_006_014.py -i $MIT_WRKDIR/MARINE_COPERNICUS -o $MASK_006_014"
 mit_prex_or_die "python $MIT_BC_IC_FROM_OGSTM_DIR/get_cut_Locations.py -c $MASK_006_014 -f $MASKFILE             > $MIT_WRKDIR/BC_IC/set_cut_indexes_006_014_vs_local.sh "
@@ -116,20 +116,22 @@ mit_prex_or_die "python $MIT_BC_IC_FROM_OGSTM_DIR/IC_files_gen.py -m $MASKFILE -
 ## phys ##
 source $MIT_WRKDIR/BC_IC/set_cut_indexes_local_itself.sh
 mit_prex_or_die "$MIT_BC_IC_FROM_OGSTM_DIR/cutter.sh -i $DAILY_PHYS_DIR -o $PHYSCUT_BC_DIR/SOUTH  -c '${MIT_BINDIR}/ncks -F -d longitude,$((Index_W+1)),$((Index_E+1)) -d latitude,$((Index_S+1)),$((Index_S+1)) ' "
+mit_prex_or_die "$MIT_BC_IC_FROM_OGSTM_DIR/cutter.sh -i $DAILY_PHYS_DIR -o $PHYSCUT_BC_DIR/WEST  -c '${MIT_BINDIR}/ncks -F -d longitude,$((Index_W+1)),$((Index_W+1)) -d latitude,$((Index_S+1)),$((Index_N+1)) ' "
 
 mit_prex_or_die " python $MIT_BC_IC_FROM_OGSTM_DIR/BC_files_gen_PHYS.py -t $TIMES_DAILY -m $MASKFILE -s E -o $PHYS_BC_DIR"
 mit_prex_or_die " python $MIT_BC_IC_FROM_OGSTM_DIR/BC_files_gen_PHYS.py -t $TIMES_DAILY -m $MASKFILE -s N -o $PHYS_BC_DIR"
-mit_prex_or_die " python $MIT_BC_IC_FROM_OGSTM_DIR/BC_files_gen_PHYS.py -t $TIMES_DAILY -m $MASKFILE -s W -o $PHYS_BC_DIR"
+mit_prex_or_die " python $MIT_BC_IC_FROM_OGSTM_DIR/BC_files_gen_PHYS.py -t $TIMES_DAILY -m $MASKFILE --nativemask $MASK_006_014_RED -s W -i $PHYSCUT_BC_DIR/WEST  -o $PHYS_BC_DIR"
 mit_prex_or_die " python $MIT_BC_IC_FROM_OGSTM_DIR/BC_files_gen_PHYS.py -t $TIMES_DAILY -m $MASKFILE --nativemask $MASK_006_014_RED -s S -i $PHYSCUT_BC_DIR/SOUTH  -o $PHYS_BC_DIR"
 
 ## bio ##
 
 # South Boundary
 mit_prex_or_die "python $MIT_BC_IC_FROM_OGSTM_DIR/ogstm_cutter.py  --loncut $Index_W,$Index_E --latcut $Index_S,$Index_S -i $DAILY_BGC_DIR --datatype ave -o ${BIOCUT_BC_DIR}/SOUTH -v $MODEL_VARS -t $TIMES_DAILY -m $MASK_006_014_RED"
+mit_prex_or_die "python $MIT_BC_IC_FROM_OGSTM_DIR/ogstm_cutter.py  --loncut $Index_W,$Index_W --latcut $Index_S,$Index_N -i $DAILY_BGC_DIR --datatype ave -o ${BIOCUT_BC_DIR}/WEST -v $MODEL_VARS -t $TIMES_DAILY -m $MASK_006_014_RED"
 
 mit_prex_or_die "python $MIT_BC_IC_FROM_OGSTM_DIR/BC_files_gen.py -t $TIMES_DAILY -v $MODEL_VARS -m $MASKFILE -s N -o $BIO_BC_DIR"
 mit_prex_or_die "python $MIT_BC_IC_FROM_OGSTM_DIR/BC_files_gen.py -t $TIMES_DAILY -v $MODEL_VARS -m $MASKFILE -s E -o $BIO_BC_DIR"
-mit_prex_or_die "python $MIT_BC_IC_FROM_OGSTM_DIR/BC_files_gen.py -t $TIMES_DAILY -v $MODEL_VARS -m $MASKFILE -s W -o $BIO_BC_DIR"
+mit_prex_or_die "python $MIT_BC_IC_FROM_OGSTM_DIR/BC_files_gen.py -t $TIMES_DAILY -v $MODEL_VARS -m $MASKFILE --nativemask $MASK_006_014_RED -s W -o $BIO_BC_DIR  -i ${BIOCUT_BC_DIR}/WEST"
 mit_prex_or_die "python $MIT_BC_IC_FROM_OGSTM_DIR/BC_files_gen.py -t $TIMES_DAILY -v $MODEL_VARS -m $MASKFILE --nativemask $MASK_006_014_RED -s S -o $BIO_BC_DIR  -i ${BIOCUT_BC_DIR}/SOUTH"
 
 mit_exit "$exit_code"
