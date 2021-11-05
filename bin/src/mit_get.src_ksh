@@ -30,10 +30,10 @@ mit_prex "cd $MIT_BC_IC_FROM_OGSTM_DIR "
 mit_prex_or_die " python TimeList_generator.py -s $DOWNSTART -e $DOWN__END --days 1 --dateformat %Y%m%d  > $DOWNTIMELISTFILE "
 mit_prex "cd $LOCALDIR "
 
-for YYYYMMDD in `cat $DOWNTIMELISTFILE`; do
-  FILENAME=asogsasc_${YYYYMMDD}00.tar.gz
-  mit_prex_or_die "wget --no-check-certificate https://dsecho.inogs.it/datastore/northern_Adriatic_benchmark/meteo/ALADIN_SI/$FILENAME"
-done
+#for YYYYMMDD in `cat $DOWNTIMELISTFILE`; do
+#  FILENAME=asogsasc_${YYYYMMDD}00.tar.gz
+#  mit_prex_or_die "wget --no-check-certificate https://dsecho.inogs.it/datastore/northern_Adriatic_benchmark/meteo/ALADIN_SI/$FILENAME"
+#done
 
 # download Copernicus static data
 CONFIG_FILE=$MIT_ETCDIR/nc-config/.cmems.ncconfig

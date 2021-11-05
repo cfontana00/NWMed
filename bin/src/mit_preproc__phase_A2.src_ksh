@@ -18,7 +18,7 @@ MASKFILE=$MIT_WRKDIR/BC_IC/mask.nc
 
 DOWNLOADED_METEO=$MIT_WRKDIR/METEO/DOWNLOAD
 #ORIG_METEO=$MIT_WRKDIR/METEO/ORIG
-ORIG_METEO=$MIT_HOME/../forcings/output
+ORIG_METEO=$MIT_HOME/../forcings/wrf/output/mitgcm_binary
 BC_METEO=$MIT_WRKDIR/METEO/BC
 
 [ -d $ORIG_METEO ] || mkdir -p $ORIG_METEO;
@@ -40,7 +40,7 @@ BC_METEO=$MIT_WRKDIR/METEO/BC
 #mit_prex_or_die " python $MIT_BC_IC_FROM_OGSTM_DIR/TimeList_generator.py -s $DATESTART -e $DATE__END --hours 1 > $TIMELISTFILE "
 #mit_prex_or_die " mpirun -np 1 python $MIT_BC_IC_FROM_OGSTM_DIR/meteo_generator.py -i $ORIG_METEO -o $BC_METEO -m $MASKFILE --nativemask $MASK_ARSO -t $TIMELISTFILE "
 
-cp $ORIG_METEO/BC* $BC_METEO
+mit_prex_or_die "cp $ORIG_METEO/BC* $BC_METEO "
 
 ##################################################################
 
