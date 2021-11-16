@@ -3,7 +3,8 @@
  &PACKAGES
  useKPP=.TRUE.,
  useOBCS=.TRUE.,
- useRBCS=.TRUE.,
+# useRBCS=.TRUE.,
+ useRBCS=.FALSE.,
  useEXF=.TRUE.,
  useCAL=.TRUE.,
  useDiagnostics=.TRUE.,

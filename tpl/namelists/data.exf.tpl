@@ -7,7 +7,7 @@
  &EXF_NML_01
  useExfCheckRange   = .FALSE.
 # useExfZenAlbedo    = .TRUE. # not in a namelist!
-# select_ZenAlbedo   = 3
+ select_ZenAlbedo   = 3
 # useExfZenIncoming  = .FALSE.
  exf_albedo=0.08,
  &END
@@ -58,8 +58,8 @@
  aqhfile       = '../input/binaries/meteo/BC_aqh',
  uwindfile     = '../input/binaries/meteo/BC_uwind',
  vwindfile     = '../input/binaries/meteo/BC_vwind',
- swfluxfile    = '../input/binaries/meteo/BC_swflux',
- lwfluxfile    = '../input/binaries/meteo/BC_lwflux',
+ swdownfile    = '../input/binaries/meteo/BC_swdown',
+ lwdownfile    = '../input/binaries/meteo/BC_lwdown',
  apressurefile = '../input/binaries/meteo/BC_apress',
  precipfile    = '../input/binaries/meteo/BC_precip',
 # runofffile    = '../input/binaries/...',

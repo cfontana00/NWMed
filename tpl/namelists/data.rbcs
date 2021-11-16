@@ -3,7 +3,8 @@
 # ***************
 &RBCS_PARM01
 useRBCptracers=.FALSE.,
-useRBCsalt=.TRUE.,
+# useRBCsalt=.TRUE.,  togliere commento e rimettere i file commentati qui sotto
+useRBCsalt=.FALSE., 
 useRBCtemp=.FALSE.,
 rbcsIniter=0,
 rbcsForcingOffset=0.0,
@@ -15,9 +16,11 @@ rbcsForcingCycle=0.0,
 # tauRelaxS=3600.,
 tauRelaxS=10800.,
 relaxTFile='',
-relaxSFile='../input/binaries/RBCs/S_rbcs_V3.dat',
+# relaxSFile='../input/binaries/RBCs/S_rbcs_V3.dat',
+relaxSFile='',
 relaxMaskFile(1) ='',
-relaxMaskFile(2) ='../input/binaries/S_source_mask_V3.dat',
+# relaxMaskFile(2) ='../input/binaries/S_source_mask_V3.dat',
+relaxMaskFile(2) ='',
 &END
 
 &RBCS_PARM02

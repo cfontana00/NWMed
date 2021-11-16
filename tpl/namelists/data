@@ -64,11 +64,15 @@
  
  globalFiles=.FALSE.,
  useSingleCpuIO=.TRUE.,
+
+ debugLevel=4,
  
  bottomDragLinear=0.0000,
  bottomDragQuadratic=0.002,
  tempAdvScheme=33,
  saltAdvScheme=33,
+# tempAdvScheme=1,
+# saltAdvScheme=1,
 
  readBinaryPrec=32,
  writeBinaryPrec=32,
@@ -88,6 +92,7 @@
  pChkPtFreq=86400.,
  periodicExternalForcing=.FALSE.,
  monitorFreq=3600.,
+# monitorFreq=10.,
  tauThetaClimRelax=0.,
  &END
 
