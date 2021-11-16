@@ -1,0 +1,3 @@
+[submodule "MITgcm_BC_IC"]
+	   path = HOST/hpc-fe1/MITgcm_BC_IC
+	   url = git@github.com:inogs/MITgcm_BC_IC.git
