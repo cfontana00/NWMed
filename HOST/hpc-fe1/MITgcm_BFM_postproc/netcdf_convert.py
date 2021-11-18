@@ -77,6 +77,7 @@ dateformat="%Y%m%d-%H:%M:%S"
 rundate_dt = datetime.strptime(RUNDATE,"%Y%m%d")
 datestart = (rundate_dt - DL.relativedelta(  days=7)).strftime(dateformat)
 dateend   = (rundate_dt + DL.relativedelta(hours=71)).strftime(dateformat)
+#dateend = (rundate_dt - DL.relativedelta(  days=3)).strftime(dateformat)
 
 TheMask = Mask(args.maskfile)
 VARLIST= file2stringlist(args.varlist)
