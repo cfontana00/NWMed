@@ -33,6 +33,7 @@ SCRIPTS=	cvs_check.ksh					\
 		mit_profile__g100.inc				\
 		mit_profile__fluxus.inc				\
 		mit_profile__hpc-fe1.inc                        \
+		mit_profile__atos.inc                           \
 		mit_rm.inc					\
                 mit_rm__slurm.inc				\
 		mit_job.ksh					\
