@@ -1,5 +1,5 @@
-if [[ $__MIT_PROFILE_galileo_IS_DEFINED__ == '' ]] ; then
-  __MIT_PROFILE_galileo_IS_DEFINED__='__defined__'
+if [[ $__MIT_PROFILE_atos_IS_DEFINED__ == '' ]] ; then
+  __MIT_PROFILE_atos_IS_DEFINED__='__defined__'
 
 # Load environment for pbs, modules:
 #. /etc/profile.d/modules.sh
@@ -19,7 +19,7 @@ NODE=$( echo "$NODENAME"| cut -d: -f1 ) # prima parte del nome del nodo
 
 MIT_HOST_LOGIN_NODES="$MIT_HOST_PRIMARY_LOGIN_NODE $MIT_HOST_SECONDARY_LOGIN_NODE"
 
-MIT_CORES_PER_NODE=28
+MIT_CORES_PER_NODE=128
 
 MIT_DEFAULT_WALL_CLOCK_LIMIT=06:00:00			# Default wall clock limit [[hh:]mm:]ss
 MIT_DEFAULT_WALL_CLOCK_LIMIT_SER=04:00:00			# Default wall clock limit [[hh:]mm:]ss

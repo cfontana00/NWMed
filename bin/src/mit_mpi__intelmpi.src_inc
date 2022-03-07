@@ -8,7 +8,7 @@ function mit_mpi_run {
   pico)
      mit_prex "time mpiexec.hydra -genv I_MPI_FABRICS=shm:ofa -genv I_MPI_DYNAMIC_CONNECTION  0 $_args"
      ;;
-  marconi|galileo|g100|hpc-fe1)
+  marconi|galileo|g100|hpc-fe1|atos)
      MPI_RANKS=168
 #     mit_prex "time mpirun --mca pml ucx --mca btl '^openib' --mca btl_openib_allow_ib 1 -np $MPI_RANKS $_args"
      mit_prex "time mpirun -np $MPI_RANKS $_args"
