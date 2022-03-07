@@ -1,2 +1,9 @@
 *~
 HOST/hpc-fe1/venvs
+*.png
+tmp.txt
+__pycache__
+log
+wrkdir
+inpdir
+archive

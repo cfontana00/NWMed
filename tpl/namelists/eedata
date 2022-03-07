@@ -6,7 +6,7 @@
  nTx=1,
  nTy=1,
  usingMPI=.TRUE.,
- debugMode=.TRUE.,
+ debugMode=.FALSE.,
  &END
 # Note: Some systems use & as the
 # namelist terminator. Other systems

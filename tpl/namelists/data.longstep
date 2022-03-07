@@ -23,6 +23,7 @@
 
  &LONGSTEP_PARM01
 # LS_nIter=6,
+# LS_nIter=3,
  LS_nIter=3,
  LS_whenToSample=2,
  &

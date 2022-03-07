@@ -1,0 +1,45 @@
+if (numberOfColumns==601 &&
+    numberOfRows==461 &&
+    latitudeOfFirstGridPointInDegrees==35 &&
+    longitudeOfFirstGridPointInDegrees==2 &&
+    latitudeOfLastGridPointInDegrees==48.8 &&
+    longitudeOfLastGridPointInDegrees==20 &&
+    jDirectionIncrementInDegrees==0.03 &&
+    iDirectionIncrementInDegrees==0.03)
+{
+   if ((level==0 &&
+        (indicatorOfParameter==59 ||
+	 indicatorOfParameter==61 ||
+         indicatorOfParameter==71)) ||
+       (level==2 &&
+        (indicatorOfParameter==11 ||
+         indicatorOfParameter==52)) ||
+       (level==10 &&
+        (indicatorOfParameter==33 ||
+         indicatorOfParameter==34)))
+   {
+      write;
+   }
+
+   if ((level==0 &&
+        (indicatorOfParameter==130)))
+   {
+      set shortName = "msl";
+      write;
+   }
+
+   if ((level==0 &&
+        (indicatorOfParameter==204)))
+   {
+      set shortName = "swavr";
+      write;
+   }
+
+   if ((level==0 &&
+        (indicatorOfParameter==205)))
+   {
+      set shortName = "lwavr";
+      write;
+   }
+
+}

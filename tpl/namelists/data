@@ -65,7 +65,7 @@
  globalFiles=.FALSE.,
  useSingleCpuIO=.TRUE.,
 
- debugLevel=4,
+# debugLevel=4,
  
  bottomDragLinear=0.0000,
  bottomDragQuadratic=0.002,
@@ -84,7 +84,7 @@
 
 # Time stepping parameters
  &PARM03
- deltaT=200.,
+ deltaT=150.,
  startTime=0.,
  endTime=864000.,
  chkPtFreq=86400.,

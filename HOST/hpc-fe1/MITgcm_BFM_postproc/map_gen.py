@@ -2,8 +2,10 @@ import pylab as pl
 from mpl_toolkits.basemap import Basemap
 import numpy as np
 
-xlim=[12.1,16.1]
-ylim=[43.5,45.85]
+#xlim=[12.1,16.1]
+#ylim=[43.5,45.85]
+xlim=[6.1,12.2]
+ylim=[41.9,44.5]
 xC=(xlim[0]+xlim[1])/2
 yC=(ylim[0]+ylim[1])/2
 map_obj = Basemap(projection='merc',lat_0=xC,lon_0=yC,\
@@ -33,10 +35,10 @@ def map_plotter_basemap(mapdict,maskobj):
     map_obj.pcolormesh(maskobj.xlevels, maskobj.ylevels, Zm,cmap=cmap,latlon='true',vmin=vmin,vmax=vmax)
 
     ax.annotate(mapdict['date'][5:] ,xy=(0.9,0.9), xycoords='axes fraction' , fontsize=28);
-    parallels = np.arange(43.,46.,.5)
+    parallels = np.arange(42.,44.5,.5)
     map_obj.drawparallels(parallels,labels=[1,0,0,0],fontsize=16, dashes=[6,900])
     # draw meridians
-    meridians = np.arange(12.,20,1.)
+    meridians = np.arange(7.,12.,1.)
     map_obj.drawmeridians(meridians,labels=[0,0,0,1],fontsize=16,dashes=[6,900])
     #cbar = map_obj.colorbar(cs,location='right',size="5%",pad="2%")    
     #cbar.ax.tick_params(labelsize=5)
@@ -80,10 +82,10 @@ def map_plotter_basemap_hourly(mapdict,maskobj):
     ax.annotate(mapdict['date'] ,xy=(0.60,0.93), xycoords='axes fraction' , fontsize=16)
     ax.annotate(layerstr       , xy=(0.77,0.85), xycoords='axes fraction' , ha='center', fontsize=16)
     
-    parallels = np.arange(43.,46.,.5)
+    parallels = np.arange(42.,44.5,.5)
     map_obj.drawparallels(parallels,labels=[1,0,0,0],fontsize=13, dashes=[6,900])
     # draw meridians
-    meridians = np.arange(12.,20,1.)
+    meridians = np.arange(7.,12.,1.)
     map_obj.drawmeridians(meridians,labels=[0,0,0,1],fontsize=13,dashes=[6,900])
     
     nticks = 6

@@ -7,7 +7,7 @@
  &EXF_NML_01
  useExfCheckRange   = .FALSE.
 # useExfZenAlbedo    = .TRUE. # not in a namelist!
- select_ZenAlbedo   = 3
+ select_ZenAlbedo   = 0
 # useExfZenIncoming  = .FALSE.
  exf_albedo=0.08,
  &END
@@ -31,13 +31,21 @@
  vwindstartdate2   = 000000,
  vwindperiod       = 3600.0,
 
- swfluxstartdate1  = @@START_DATE@@,
- swfluxstartdate2  = 000000,
- swfluxperiod      = 3600.0,
+# swfluxstartdate1  = @@START_DATE@@,
+# swfluxstartdate2  = 000000,
+# swfluxperiod      = 3600.0,
 
- lwfluxstartdate1  = @@START_DATE@@,
- lwfluxstartdate2  = 000000,
- lwfluxperiod      = 3600.0,
+# lwfluxstartdate1  = @@START_DATE@@,
+# lwfluxstartdate2  = 000000,
+# lwfluxperiod      = 3600.0,
+
+ swdownstartdate1  = @@START_DATE@@,
+ swdownstartdate2  = 000000,
+ swdownperiod      = 3600.0,
+
+ lwdownstartdate1  = @@START_DATE@@,
+ lwdownstartdate2  = 000000,
+ lwdownperiod      = 3600.0,
 
  apressurestartdate1  = @@START_DATE@@,
  apressurestartdate2  = 000000,

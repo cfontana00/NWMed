@@ -15,6 +15,7 @@ def readvargrep(var,filename):
                  'ptracer52','ptracer53','ptracer54','ptracer55',
                  'ptracer56','ptracer57','ptracer58','ptracer59',
                  'ptracer60','ptracer61','ptracer62','ptracer63']
+    varname_CFL=['trAdv_CFL_u_max','trAdv_CFL_v_max','trAdv_CFL_w_max']
 
     if any(var in s for s in varname_dynstat): # checkvar physics
         vargrep='dynstat_'+var+'_mean' # var physics
@@ -30,6 +31,8 @@ def readvargrep(var,filename):
     elif any(var in s for s in varname_trc):  # checkvar tracer
         vargrep='trcstat_'+var+'_mean' # var tracer
     # vargrep=['trcstat_' var '_max']; # var tracer
+    elif any(var in s for s in varname_CFL):  # checkvar tracer
+        vargrep=var # var tracer
 
     #command=''grep ' vargrep ' ' filename ' | awk ''{print $6}'' > tmp.txt''
     f = open('tmp.txt','w')
