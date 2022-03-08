@@ -1,5 +1,6 @@
 *~
 HOST/hpc-fe1/venvs
+HOST/atos/venvs
 *.png
 tmp.txt
 __pycache__

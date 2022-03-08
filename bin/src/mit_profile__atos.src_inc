@@ -43,6 +43,12 @@ MIT_DEFAULT_TASKS_POST=36                               # Default tasks' number 
 #mit_batch_prex "module load profile/advanced"
 #mit_batch_prex "module load jq/1.6--gcc--10.2.0"
 
+mit_batch prex "module load prgenv/intel"
+mit_batch prex "module load intel-mpi"
+mit_batch prex "module load netcdf4-parallel"
+mit_batch prex "module load nco"
+mit_batch prex "module load python3"
+
 mit_batch_prex "ulimit -s unlimited"
 
 
