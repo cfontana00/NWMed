@@ -8,7 +8,7 @@
         "domain_depth_min": 0.0,
         "domain_depth_max": 2900.0,
 	"days_before": 7,
-	"days_after": 3,
+	"days_after": 1,
 	"motu_server": "http://nrt.cmems-du.eu/motu-web/Motu",
 	"services": [
 		{
