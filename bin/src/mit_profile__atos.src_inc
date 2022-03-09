@@ -47,8 +47,11 @@ mit_batch_prex "module purge"
 mit_batch_prex "module load prgenv/intel"
 mit_batch_prex "module load intel-mpi"
 mit_batch_prex "module load netcdf4-parallel"
+mit_batch_prex "module load gsl"
 mit_batch_prex "module load nco"
 mit_batch_prex "module load python3"
+mit_batch_prex "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$GSL_DIR/lib"
+mit_batch_prex "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$NETCDF4_DIR/lib"
 
 mit_batch_prex "ulimit -s unlimited"
 
