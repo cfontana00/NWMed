@@ -11,7 +11,7 @@ function mit_rm_wall_clock_limit {
 
 function mit_rm_mpi_tasks {
   typeset -i _tasks="$1"
-  typeset -i _full_nodes=$(( $_tasks / $MIT_CORES_PER_NODE ))
+  typeset -i _full_nodes=$(( $_tasks / $MIT_CORES_PER_NODE))
   typeset -i _part_cores=$(( $_tasks - ( $_full_nodes * $MIT_CORES_PER_NODE ) ))
 #   typeset -i _part_mem=$(( _part_cores * $MIT_DEFAULT_MEM / $MIT_CORES_PER_NODE ))
   typeset    _sep=''
@@ -29,6 +29,25 @@ function mit_rm_mpi_tasks {
 #  if [[ $_part_cores -ne 0 ]] ; then
 #    _res="$_res${_sep}1:ncpus=${_part_cores}:mpiprocs=${_part_cores}:ompthreads=1:mem=${MIT_DEFAULT_MEM}"
 #  fi
+  printf "${_res}"
+}
+
+function mit_rm_mpi_tasks_post {
+  MIT_CORES_PER_NODE_POST=28
+  typeset -i _tasks="$1"
+  typeset -i _full_nodes=$(( $_tasks / $MIT_CORES_PER_NODE_POST))
+  typeset -i _part_cores=$(( $_tasks - ( $_full_nodes * $MIT_CORES_PER_NODE_POST ) ))
+  typeset    _sep=''
+  typeset    _res=''
+ 1>&2
+
+  if [[ $_part_cores -ne 0 ]] ; then
+    _full_nodes=$(( $_full_nodes + 1))
+  fi
+  if [[ $_full_nodes -ne 0 ]] ; then
+    _res="${_full_nodes} -n ${_tasks}"
+    _sep='+'
+  fi
   printf "${_res}"
 }
 

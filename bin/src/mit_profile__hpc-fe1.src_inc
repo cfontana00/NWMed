@@ -19,13 +19,13 @@ NODE=$( echo "$NODENAME"| cut -d: -f1 ) # prima parte del nome del nodo
 
 MIT_HOST_LOGIN_NODES="$MIT_HOST_PRIMARY_LOGIN_NODE $MIT_HOST_SECONDARY_LOGIN_NODE"
 
-MIT_CORES_PER_NODE=28
+MIT_CORES_PER_NODE=14
 
 MIT_DEFAULT_WALL_CLOCK_LIMIT=06:00:00			# Default wall clock limit [[hh:]mm:]ss
 MIT_DEFAULT_WALL_CLOCK_LIMIT_SER=04:00:00			# Default wall clock limit [[hh:]mm:]ss
 MIT_DEFAULT_WALL_CLOCK_LIMIT_PAR=24:00:00			# Default wall clock limit [[hh:]mm:]ss
-MIT_DEFAULT_TASKS=168					# Default tasks' number WARNING: 1 node is not enough
-MIT_DEFAULT_TASKS_POST=36                               # Default tasks' number for postprocessing
+MIT_DEFAULT_TASKS=112					# Default tasks' number WARNING: 1 node is not enough
+MIT_DEFAULT_TASKS_POST=72                               # Default tasks' number for postprocessing
 #MIT_DEFAULT_QUEUE="g100_meteo_prod"                                      # Default queue
 #MIT_DEFAULT_QUEUE_PAR="g100_meteo_prod"                                  # Default queue par
 #MIT_DEFAULT_QUEUE_SER="serial"                                 # Default queue ser
@@ -43,7 +43,26 @@ MIT_DEFAULT_TASKS_POST=36                               # Default tasks' number 
 #mit_batch_prex "module load profile/advanced"
 #mit_batch_prex "module load jq/1.6--gcc--10.2.0"
 
-mit_batch_prex "ulimit -s unlimited"
+#mit_batch_prex "export I_MPI_ROOT=/cluster/compiler/intel/2019u3/compilers_and_libraries_2019.3.199/linux/mpi"
+#mit_batch_prex "export INTEL_PYTHONHOME=/cluster/compiler/intel/2019u3/debugger_2019/python/intel64/"
+#mit_batch_prex "export IPPROOT=/cluster/compiler/intel/2019u3/compilers_and_libraries_2019.3.199/linux/ipp"
+#mit_batch_prex "export DAALROOT=/cluster/compiler/intel/2019u3/compilers_and_libraries_2019.3.199/linux/daal"
+#mit_batch_prex "export PATH=/cluster/compiler/intel/2019u3/compilers_and_libraries_2019.3.199/linux/bin/intel64:/cluster/compiler/intel/2019u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/libfabric/bin:/cluster/compiler/intel/2019u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/bin:/cluster/compiler/intel/2019u3/debugger_2019/gdb/intel64/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/opt/ibutils/bin:/root/bin:$PATH"
+#mit_batch_prex "export INTEL_LICENSE_FILE=/cluster/compiler/intel/license/"
+#mit_batch_prex "export CPATH=/cluster/compiler/intel/2019u3/compilers_and_libraries_2019.3.199/linux/ipp/include:/cluster/compiler/intel/2019u3/compilers_and_libraries_2019.3.199/linux/mkl/include:/cluster/compiler/intel/2019u3/compilers_and_libraries_2019.3.199/linux/pstl/include:/cluster/compiler/intel/2019u3/compilers_and_libraries_2019.3.199/linux/tbb/include:/cluster/compiler/intel/2019u3/compilers_and_libraries_2019.3.199/linux/tbb/include:/cluster/compiler/intel/2019u3/compilers_and_libraries_2019.3.199/linux/daal/include"
+#mit_batch_prex "LD_LIBRARY_PATH=/cluster/compiler/intel/2019u3/compilers_and_libraries_2019.3.199/linux/compiler/lib/intel64_lin:/cluster/compiler/intel/2019u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/libfabric/lib:/cluster/compiler/intel/2019u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/lib/release:/cluster/compiler/intel/2019u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/lib:/cluster/compiler/intel/2019u3/compilers_and_libraries_2019.3.199/linux/ipp/lib/intel64:/cluster/compiler/intel/2019u3/compilers_and_libraries_2019.3.199/linux/compiler/lib/intel64_lin:/cluster/compiler/intel/2019u3/compilers_and_libraries_2019.3.199/linux/mkl/lib/intel64_lin:/cluster/compiler/intel/2019u3/compilers_and_libraries_2019.3.199/linux/tbb/lib/intel64/gcc4.7:/cluster/compiler/intel/2019u3/compilers_and_libraries_2019.3.199/linux/tbb/lib/intel64/gcc4.7:/cluster/compiler/intel/2019u3/debugger_2019/libipt/intel64/lib:/cluster/compiler/intel/2019u3/compilers_and_libraries_2019.3.199/linux/daal/lib/intel64_lin:/cluster/compiler/intel/2019u3/compilers_and_libraries_2019.3.199/linux/daal/../tbb/lib/intel64_lin/gcc4.4:$LD_LIBRARY_PATH"
+#mit_batch_prex "export FI_PROVIDER_PATH=/cluster/compiler/intel/2019u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/libfabric/lib/prov"
+#mit_batch_prex "export PKG_CONFIG_PATH=/cluster/compiler/intel/2019u3/compilers_and_libraries_2019.3.199/linux/mkl/bin/pkgconfig"
+#mit_batch_prex "MANPATH=/cluster/compiler/intel/2019u3/man/common:/cluster/compiler/intel/2019u3/compilers_and_libraries_2019.3.199/linux/mpi/man:/cluster/compiler/intel/2019u3/documentation_2019/en/debugger/gdb-ia/man/:/usr/local/share/man:/usr/share/man/overrides:/usr/share/man:/opt/ibutils/share/man:$MANPATH"
+#mit_batch_prex "export LIBRARY_PATH=/cluster/compiler/intel/2019u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/libfabric/lib:/cluster/compiler/intel/2019u3/compilers_and_libraries_2019.3.199/linux/ipp/lib/intel64:/cluster/compiler/intel/2019u3/compilers_and_libraries_2019.3.199/linux/compiler/lib/intel64_lin:/cluster/compiler/intel/2019u3/compilers_and_libraries_2019.3.199/linux/mkl/lib/intel64_lin:/cluster/compiler/intel/2019u3/compilers_and_libraries_2019.3.199/linux/tbb/lib/intel64/gcc4.7:/cluster/compiler/intel/2019u3/compilers_and_libraries_2019.3.199/linux/tbb/lib/intel64/gcc4.7:/cluster/compiler/intel/2019u3/compilers_and_libraries_2019.3.199/linux/daal/lib/intel64_lin:/cluster/compiler/intel/2019u3/compilers_and_libraries_2019.3.199/linux/daal/../tbb/lib/intel64_lin/gcc4.4"
+#mit_batch_prex "export TBBROOT=/cluster/compiler/intel/2019u3/compilers_and_libraries_2019.3.199/linux/tbb"
+#mit_batch_prex "export INFOPATH=/cluster/compiler/intel/2019u3/documentation_2019/en/debugger/gdb-ia/info/"
+#mit_batch_prex "export MKLROOT=/cluster/compiler/intel/2019u3/compilers_and_libraries_2019.3.199/linux/mkl"
+#mit_batch_prex "export NLSPATH=/cluster/compiler/intel/2019u3/compilers_and_libraries_2019.3.199/linux/compiler/lib/intel64/locale/%l_%t/%N:/cluster/compiler/intel/2019u3/compilers_and_libraries_2019.3.199/linux/mkl/lib/intel64_lin/locale/%l_%t/%N:/cluster/compiler/intel/2019u3/debugger_2019/gdb/intel64/share/locale/%l_%t/%N"
+#mit_batch_prex "export CLASSPATH=/cluster/compiler/intel/2019u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/lib/mpi.jar:/cluster/compiler/intel/2019u3/compilers_and_libraries_2019.3.199/linux/daal/lib/daal.jar"
+#mit_batch_prex "export PSTLROOT=/cluster/compiler/intel/2019u3/compilers_and_libraries_2019.3.199/linux/pstl"
+
+#mit_batch_prex "ulimit -s unlimited"
 
 
 function mit_is_login_node {
