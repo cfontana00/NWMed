@@ -76,8 +76,8 @@ OUTPUTDIR=addsep(args.outputdir)
 
 rundate_dt = datetime.strptime(RUNDATE,"%Y%m%d")
 datestart_plot = rundate_dt.strftime("%Y%m%d-%H:%M:%S")
-#dateend        = (rundate_dt+DL.relativedelta(hours=71)).strftime("%Y%m%d-%H:%M:%S")
-dateend        = (rundate_dt-DL.relativedelta(days=7)+DL.relativedelta(hours=71)).strftime("%Y%m%d-%H:%M:%S")
+dateend        = (rundate_dt+DL.relativedelta(hours=71)).strftime("%Y%m%d-%H:%M:%S")
+#dateend        = (rundate_dt-DL.relativedelta(days=7)+DL.relativedelta(hours=71)).strftime("%Y%m%d-%H:%M:%S")
 
 dateformat="%Y%m%d-%H:%M:%S"
 
