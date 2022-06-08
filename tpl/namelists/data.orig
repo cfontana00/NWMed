@@ -6,7 +6,7 @@
 # tRef=27*25.,
 # sRef=27*38.,
 
- viscAh=0.5,
+ viscAh=0.0,
 
  viscAz=1.E-6,
  viscA4=0.,
@@ -23,22 +23,22 @@
 
 # This is the standard Leith Viscosity coefficient, 
 # visc=(visc2leith/pi)**3 grad(curl v_h)
- viscC2leith=1.0,
- viscC4leith=0.1,
+ viscC2leith=0.5,
+ viscC4leith=0.05,
 
 # This is an additional Leith Viscosity, prop to grad(div.v_h)
 # It traps instabilities that have no signal in grad(curl v_h)
- viscC2leithD=1.0,
- viscC4leithD=0.1,
+ viscC2leithD=0.5,
+ viscC4leithD=0.05,
 
 # for this grid
- viscC2Smag=1.0,
- viscC4Smag=0.1,
+ viscC2Smag=0.5,
+ viscC4Smag=0.05,
 
 # This is the max Viscosity used, be it Smag or Leith, and it scales 
 # with grid size and timestep
- viscAhGridMax=1.0,
- viscA4GridMax=1.0,
+ viscAhGridMax=1.E-2,
+ viscA4GridMax=1.E-9,
 
  staggerTimeStep=.TRUE.,
 
@@ -63,10 +63,9 @@
  linFSConserveTr=.FALSE.,
  
  globalFiles=.FALSE.,
-#  globalFiles=.TRUE.,
-# useSingleCpuIO=.TRUE.,
- useSingleCpuIO=.FALSE.,
- 
+ useSingleCpuIO=.TRUE.,
+# useSingleCpuIO=.FALSE.,
+
 # debugLevel=4,
  
  bottomDragLinear=0.0000,
@@ -128,5 +127,4 @@
  hydrogSaltFile='../input/binaries/ICs/PHYS/IC_S.dat',
  uVelInitFile='../input/binaries/ICs/PHYS/IC_U.dat',
  vVelInitFile='../input/binaries/ICs/PHYS/IC_V.dat',
- mdsioLocalDir='output',
 &END
