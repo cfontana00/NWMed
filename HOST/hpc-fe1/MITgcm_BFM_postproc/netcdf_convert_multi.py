@@ -102,7 +102,8 @@ for var in VARLIST:
         print(outfile)
 #        M3d = readFrame_from_file(inputfile, 0, TheMask.shape)
         input_dir = INPUTDIR + 'output*/' + var
-        M3d = rdmds(input_dir,(it+1+offset)*TimeSteps_in_h,machineformat='l')
+        iteration = (it+1+offset)*TimeSteps_in_h
+        M3d = rdmds(input_dir,iteration,machineformat='l')
         M3d[~TheMask.mask] = 1.e+20
         netcdf4.write_3d_file(M3d, var, outfile, TheMask, compression=True)
 

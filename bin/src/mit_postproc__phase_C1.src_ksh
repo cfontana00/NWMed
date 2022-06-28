@@ -83,7 +83,7 @@ mit_date > $PRODUCTS/timestamp
 
 ##mit_prex_or_die "md5sum $MIT_ARCDIR_ROOT/current/maps.tar > $MIT_ARCDIR_ROOT/current/maps.tar.md5"
 
-#mit_prex_or_die "rm -rf $NETCDF_DIR"
+mit_prex_or_die "rm -rf $NETCDF_DIR"
 mit_prex_or_die "rm -rf $TMPDIR"
 mit_prex_or_die "rm -rf $OUTPUTDIR"
 mit_prex_or_die "cp -r $PRODUCTS /OCEANASTORE/progetti/sharemed/mitgcm/NWMed/webGIS/products_$MIT_RUNDATE"

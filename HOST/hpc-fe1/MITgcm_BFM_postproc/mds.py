@@ -123,10 +123,10 @@ def parsemeta(metafile):
 
         if opening == '[':
             # [] can contain any type of values, separated by commas
-            val = [ parse1(s) for s in re.split(r',? *',line) ]
+            val = [ parse1(s) for s in re.split(r',? +',line) ]
         else:
             # {} can only contain single quote-delimited strings separated by space
-            val = [ s.rstrip() for s in re.split(r"'  *'", line.strip("'")) ]
+            val = [ s.rstrip() for s in re.split(r"'  +'", line.strip("'")) ]
 
         d[key] = val
 
