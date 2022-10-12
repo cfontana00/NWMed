@@ -34,6 +34,11 @@ def argument():
                                 default = None,
                                 required = True
                                 )
+    parser.add_argument(   '--length',"-l",
+                                type = str,
+                                default = '71',
+                                required = False
+                                )
     return parser.parse_args()
 
 args = argument()
@@ -73,11 +78,13 @@ OUTDIR=addsep(args.outputdir)
 RUNDATE=args.rundate
 dateformat="%Y%m%d-%H:%M:%S"
 
+fc_length=int(args.length)
 
 rundate_dt = datetime.strptime(RUNDATE,"%Y%m%d")
 #datestart = (rundate_dt - DL.relativedelta(  days=7)).strftime(dateformat)
 datestart = (rundate_dt).strftime(dateformat)
-dateend   = (rundate_dt + DL.relativedelta(hours=71)).strftime(dateformat)
+#dateend   = (rundate_dt + DL.relativedelta(hours=71)).strftime(dateformat)
+dateend   = (rundate_dt + DL.relativedelta(hours=fc_length)).strftime(dateformat)
 #dateend   = (rundate_dt - DL.relativedelta(days=7) + DL.relativedelta(hours=23)).strftime(dateformat)
 #dateend = (rundate_dt - DL.relativedelta(  days=1)).strftime(dateformat)
 
@@ -101,7 +108,7 @@ for var in VARLIST:
         outfile   = "%save.%s.%s.nc"  %(OUTDIR,t.strftime(dateformat),var)
         print(outfile)
 #        M3d = readFrame_from_file(inputfile, 0, TheMask.shape)
-        input_dir = INPUTDIR + 'output*/' + var
+        input_dir = INPUTDIR + 'output*/' + var + '/' + var
         iteration = (it+1+offset)*TimeSteps_in_h
         M3d = rdmds(input_dir,iteration,machineformat='l')
         M3d[~TheMask.mask] = 1.e+20

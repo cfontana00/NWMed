@@ -43,8 +43,14 @@ FRC_DIR_TXT=$FRC_DIR/meteo_txt/$MIT_RUNDATE
 
 # per usare forecast wrf delle 12
 wrf_grb=12_arw_ecm_3km.grb
+wrf_grb_00=00_arw_ecm_3km.grb
 wrf_nc=12_arw_ecm_3km.nc
+wrf_nc_00=00_arw_ecm_3km.nc
 WRF_DIR=/OCEANASTORE/progetti/meteop/data/wrf03ecm
+
+mit_prex "rm $MIT_WRKDIR/MODEL/fc_length.txt"
+FC_LENGTH=$MIT_WRKDIR/MODEL/fc_length.txt
+
 for i in {1..10}
 do
     DATE_I=$( date -d "${MIT_RUNDATE}  -  ${i} days  " +%Y%m%d )
@@ -52,6 +58,26 @@ do
     echo $DATE_I
     ifile=$DATE_I$wrf_grb
     ofile=$DATE_I$wrf_nc
+    if [ -f $WRF_DIR/$ifile ]; then
+	echo "file $ifile exist"
+	if [ $i -eq 1 ]; then
+	    echo "3" > $FC_LENGTH
+        fi
+    else
+	ifile=$DATE_I$wrf_grb_00
+	ofile=$DATE_I$wrf_nc_00
+	if [ -f $WRF_DIR/$ifile ]; then
+	    echo "using fc file of 00h for day $DATE_I"
+	    if [ $i -eq 1 ]; then
+		echo "2" > $FC_LENGTH
+	    fi
+	else
+	    echo "no fc file for day $DATE_I"
+	    if [ $i -eq 1 ]; then
+		echo "2" > $FC_LENGTH
+	    fi
+	fi
+    fi
     if [ -f $FRC_DIR_NC/$ofile ]; then
 	echo "file $ofile already present"
     else
@@ -79,7 +105,7 @@ XAPPLRESDIR=${MCRROOT}/X11/app-defaults
 export LD_LIBRARY_PATH
 export XAPPLRESDIR
 
-$FRC_DIR_MAT/make_meteo_mitgcm_fc_wrf_12 $MIT_RUNDATE > $MIT_RUNLOGDIR/mat.log
+$FRC_DIR_MAT/make_meteo_mitgcm_fc_wrf_best $MIT_RUNDATE > $MIT_RUNLOGDIR/mat.log
 
 #TIMELISTFILE=$MIT_WRKDIR/METEO/meteo_timelist.txt
 

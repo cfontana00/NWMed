@@ -61,11 +61,16 @@ delZ[1:] = np.diff(CellBottoms)
 #e2t=np.fromfile(DIR + "DYC.data" ,dtype=np.float32,count=jpi*jpj).reshape(jpj,jpi)
 #e3t_fact=np.fromfile(DIR + "hFacC.data" ,dtype=np.float32,count=jpi*jpj*jpk).reshape(jpk,jpj,jpi)
 
-xC = rdmds(DIR + 'output*/XC',machineformat='l')
-yC = rdmds(DIR + 'output*/YC',machineformat='l')
-e1t = rdmds(DIR + 'output*/DXC',machineformat='l')
-e2t = rdmds(DIR + 'output*/DYC',machineformat='l')
-e3t_fact = rdmds(DIR + 'output*/hFacC',machineformat='l')
+input_file = DIR + 'output*/XC'
+xC = rdmds(input_file,machineformat='l')
+input_file = DIR + 'output*/YC'
+yC = rdmds(input_file,machineformat='l')
+input_file = DIR + 'output*/DXC'
+e1t = rdmds(input_file,machineformat='l')
+input_file = DIR + 'output*/DYC'
+e2t = rdmds(input_file,machineformat='l')
+input_file = DIR + 'output*/hFacC'
+e3t_fact = rdmds(input_file,machineformat='l')
 
 e3t=np.zeros((1,jpk,jpj,jpi),np.float32)
 for jk in range(jpk):

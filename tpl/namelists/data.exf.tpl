@@ -7,7 +7,7 @@
  &EXF_NML_01
  useExfCheckRange   = .FALSE.
 # useExfZenAlbedo    = .TRUE. # not in a namelist!
- select_ZenAlbedo   = 0
+# select_ZenAlbedo   = 0
 # useExfZenIncoming  = .FALSE.
  exf_albedo=0.08,
  &END

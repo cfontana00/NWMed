@@ -1,6 +1,7 @@
 #!/bin/python
 
 import os
+import shutil
 import numpy as np
 
 try:
@@ -23,10 +24,11 @@ for it in local_INDEXES:
     print(it,rank)
     rm_dir = INPUTDIR + str(it).zfill(3)
     if os.path.isdir(rm_dir):
-        for filename in os.listdir(rm_dir):
-            file_path = os.path.join(rm_dir , filename)
-            os.remove(file_path)
-        os.rmdir(rm_dir)
+        shutil.rmtree(rm_dir)
+#        for filename in os.listdir(rm_dir):
+#            file_path = os.path.join(rm_dir , filename)
+#            os.remove(file_path)
+#        os.rmdir(rm_dir)
     print("rm ", rm_dir)
 
 print("done")

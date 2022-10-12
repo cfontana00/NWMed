@@ -8,3 +8,5 @@ wrkdir
 inpdir
 archive
 STDOUT*
+test.py
+test_bash.sh

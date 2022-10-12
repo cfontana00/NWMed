@@ -138,7 +138,7 @@ for var in ["T","S","U","V"]:
                 M[:,Lat_Ind[iRiver]] = C[iRiver,it]
             if side is "S" or side is "N":
                 M[:,Lon_Ind[iRiver]] = C[iRiver,it]
-        writeCheckFile()            
+        #writeCheckFile()            
         F.write(M)
     F.write(M)
     F.write(M)
