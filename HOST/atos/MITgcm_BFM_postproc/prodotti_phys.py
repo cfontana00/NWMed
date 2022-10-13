@@ -234,3 +234,4 @@ for ip in PROCESSES[rank::nranks]:
 
     ncOUT.close()
         
+MPI.Finalize()

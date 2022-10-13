@@ -164,8 +164,10 @@ def WRITE_RST(inputfile, outfile,var):
     ncvar[:] = np.array(ncIN["TRN" + var])
     ncIN.close()
     ncOUT.close()
-    
 
+    
+print(rank,nranks)
+#print(FILELIST)
 for filename in FILELIST[rank::nranks]:
     basename=os.path.basename(filename)
     outfile=OUTPUTDIR + basename

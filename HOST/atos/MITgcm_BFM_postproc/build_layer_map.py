@@ -37,6 +37,11 @@ def argument():
                                 default = None,
                                 required = True
                                 )
+    parser.add_argument(   '--length',"-l",
+                                type = str,
+                                default = '71',
+                                required = False
+                                )
     return parser.parse_args()
 
 args = argument()
@@ -74,10 +79,13 @@ RUNDATE=args.rundate
 INPUTDIR=addsep(args.inputdir)
 OUTPUTDIR=addsep(args.outputdir)
 
+fc_length=int(args.length)
+
 rundate_dt = datetime.strptime(RUNDATE,"%Y%m%d")
 datestart_plot = rundate_dt.strftime("%Y%m%d-%H:%M:%S")
 #dateend        = (rundate_dt+DL.relativedelta(hours=71)).strftime("%Y%m%d-%H:%M:%S")
-dateend        = (rundate_dt-DL.relativedelta(days=7)+DL.relativedelta(hours=24)).strftime("%Y%m%d-%H:%M:%S")
+dateend        = (rundate_dt+DL.relativedelta(hours=fc_length)).strftime("%Y%m%d-%H:%M:%S")
+#dateend        = (rundate_dt-DL.relativedelta(days=7)+DL.relativedelta(hours=71)).strftime("%Y%m%d-%H:%M:%S")
 
 dateformat="%Y%m%d-%H:%M:%S"
 
