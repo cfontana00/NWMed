@@ -84,7 +84,7 @@ TheMask = Mask(args.maskfile)
 VARLIST= file2stringlist(args.varlist)
 
 timelist=DL.getTimeList(datestart, dateend, hours=1)
-timestep = 150 #s, hardcoded
+timestep = 200 #s, hardcoded
 
 TimeSteps_in_h = 3600/timestep
 #TimeSteps_in_h = 1

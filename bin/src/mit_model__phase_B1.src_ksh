@@ -124,6 +124,14 @@ BATHY=$MIT_WRKDIR/BC_IC/bathy.bin
 cd $wrkdir/run/
 mit_prex_or_die "ln -fs $BATHY"
 
+FC_LENGTH=$wrkdir/fc_length.txt
+while IFS=: read line;
+do
+    if [ $line -eq "2" ]; then
+	sed -i "91s/864000/777600/" $wrkdir/run/data
+	echo "adjusting forecast length to 2"
+    fi
+done < $FC_LENGTH
 
 mit_exit "$errors"
 

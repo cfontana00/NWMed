@@ -381,7 +381,7 @@ fi
 #fi
 
 mit_rm_tasks="$(mit_rm_mpi_tasks $mit_tasks)"
-mit_rm_tasks_post="$(mit_rm_mpi_tasks $mit_tasks_post)"
+mit_rm_tasks_post="$(mit_rm_mpi_tasks_post $mit_tasks_post)"
 #echo "MPI TASKS: $mit_tasks -> $mit_rm_tasks"
 #read aaa
 

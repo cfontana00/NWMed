@@ -1,0 +1,130 @@
+# run NWMED - OPERATIONAL
+# Model parameters
+
+# Continuous equation parameters
+ &PARM01
+# tRef=27*25.,
+# sRef=27*38.,
+
+ viscAh=0.0,
+
+ viscAz=1.E-6,
+ viscA4=0.,
+ diffKhT=0.01,
+ diffKzT=1.E-6,
+ diffK4T=0.,
+ diffKhS=0.01,
+ diffKzS=1.E-6,
+ diffK4S=0.,
+
+ useFullLeith=.TRUE.,
+# This uses the Strain-Tension form for calculating viscous terms
+ useStrainTensionVisc=.TRUE.,
+
+# This is the standard Leith Viscosity coefficient, 
+# visc=(visc2leith/pi)**3 grad(curl v_h)
+ viscC2leith=0.5,
+ viscC4leith=0.05,
+
+# This is an additional Leith Viscosity, prop to grad(div.v_h)
+# It traps instabilities that have no signal in grad(curl v_h)
+ viscC2leithD=0.5,
+ viscC4leithD=0.05,
+
+# for this grid
+ viscC2Smag=0.5,
+ viscC4Smag=0.05,
+
+# This is the max Viscosity used, be it Smag or Leith, and it scales 
+# with grid size and timestep
+ viscAhGridMax=1.E-2,
+ viscA4GridMax=1.E-9,
+
+ staggerTimeStep=.TRUE.,
+
+ useConstantF=.FALSE.,
+ useBetaPlaneF=.FALSE.,
+ useSphereF=.TRUE.,
+ use3dCoriolis=.TRUE.,
+ eosType='JMD95Z',
+ hFacMin=0.2,
+ no_slip_sides=.TRUE.,
+ no_slip_bottom=.TRUE.,
+ 
+ exactConserv=.TRUE.,
+ addFrictionHeating=.TRUE.,
+
+ implicitDiffusion=.TRUE.,
+ implicitViscosity=.TRUE.,
+ nonHydrostatic=.TRUE.,
+ useNHMTerms=.TRUE.,
+ useRealFreshwaterFlux=.TRUE.,
+ selectAddFluid=1, 
+ linFSConserveTr=.FALSE.,
+ 
+ globalFiles=.FALSE.,
+ useSingleCpuIO=.TRUE.,
+# useSingleCpuIO=.FALSE.,
+
+# debugLevel=4,
+ 
+ bottomDragLinear=0.0000,
+ bottomDragQuadratic=0.002,
+ tempAdvScheme=33,
+ saltAdvScheme=33,
+# tempAdvScheme=1,
+# saltAdvScheme=1,
+
+ readBinaryPrec=32,
+ writeBinaryPrec=32,
+ &END
+
+# Elliptic solver parameters
+ &PARM02
+ &END
+
+# Time stepping parameters
+ &PARM03
+ deltaT=200.,
+ startTime=0.,
+ endTime=864000.,
+# endTime=86400.,
+# endTime=7200.,
+ chkPtFreq=86400.,
+ dumpFreq=0.,
+ pChkPtFreq=86400.,
+ periodicExternalForcing=.FALSE.,
+ monitorFreq=3600.,
+# monitorFreq=10.,
+ tauThetaClimRelax=0.,
+ &END
+
+# Gridding parameters
+ &PARM04
+ usingCartesianGrid=.FALSE.,
+ usingSphericalPolarGrid=.TRUE.,
+ ygOrigin=41.88125,
+ xgOrigin=6.0625,
+ delX=784*0.0078125,
+ delY=336*0.0078125,
+# delZ= 1.500,  1.501,  3.234,  3.483,  3.750,  4.035,  4.339,  4.665,  5.012,  5.384,
+#       5.781,  6.206,  6.659,  7.144,  7.661,  8.215,  8.806,  9.437, 10.112, 10.833,
+#      11.603, 12.426, 13.305, 14.244, 15.247, 16.319, 17.463,
+ delZ= 1.500,  1.501,  3.234,  3.477,  3.737,  4.018,  4.319,  4.643,  4.991,  5.365,
+       5.768,  6.200,  6.665,  7.165,  7.703,  8.280,  8.901,  9.569, 10.287, 11.058,
+      11.888, 12.779, 13.738, 14.768, 15.875, 17.066, 18.346, 19.722, 21.201, 22.791,
+      24.501, 26.338, 28.314, 30.437, 32.720, 35.174, 37.812, 40.648, 43.696, 46.974,
+      50.497, 54.284, 58.355, 62.732, 67.437, 72.494, 77.931, 83.776, 90.059, 96.814,
+     104.075,111.881,120.272,129.292,138.989,149.413,160.619,172.665,185.615,199.537, 
+ &END
+
+# Input datasets
+ &PARM05
+# the_run_name='run OPERATIONAL @@START_DATE@@',
+ the_run_name='run OPERATIONAL',
+ bathyFile='bathy.bin',
+ hydrogThetaFile='../input/binaries/ICs/PHYS/IC_T.dat',
+ hydrogSaltFile='../input/binaries/ICs/PHYS/IC_S.dat',
+ uVelInitFile='../input/binaries/ICs/PHYS/IC_U.dat',
+ vVelInitFile='../input/binaries/ICs/PHYS/IC_V.dat',
+&END

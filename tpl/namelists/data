@@ -6,7 +6,7 @@
 # tRef=27*25.,
 # sRef=27*38.,
 
- viscAh=0.0,
+ viscAh=0.5,
 
  viscAz=1.E-6,
  viscA4=0.,
@@ -23,22 +23,22 @@
 
 # This is the standard Leith Viscosity coefficient, 
 # visc=(visc2leith/pi)**3 grad(curl v_h)
- viscC2leith=0.5,
- viscC4leith=0.05,
+ viscC2leith=1.0,
+ viscC4leith=0.1,
 
 # This is an additional Leith Viscosity, prop to grad(div.v_h)
 # It traps instabilities that have no signal in grad(curl v_h)
- viscC2leithD=0.5,
- viscC4leithD=0.05,
+ viscC2leithD=1.0,
+ viscC4leithD=0.1,
 
 # for this grid
- viscC2Smag=0.5,
- viscC4Smag=0.05,
+ viscC2Smag=1.0,
+ viscC4Smag=0.1,
 
 # This is the max Viscosity used, be it Smag or Leith, and it scales 
 # with grid size and timestep
- viscAhGridMax=1.E-2,
- viscA4GridMax=1.E-9,
+ viscAhGridMax=1.0,
+ viscA4GridMax=1.0,
 
  staggerTimeStep=.TRUE.,
 
@@ -63,8 +63,10 @@
  linFSConserveTr=.FALSE.,
  
  globalFiles=.FALSE.,
- useSingleCpuIO=.TRUE.,
-
+#  globalFiles=.TRUE.,
+# useSingleCpuIO=.TRUE.,
+ useSingleCpuIO=.FALSE.,
+ 
 # debugLevel=4,
  
  bottomDragLinear=0.0000,
@@ -84,10 +86,16 @@
 
 # Time stepping parameters
  &PARM03
- deltaT=150.,
+ deltaT=200.,
  startTime=0.,
+<<<<<<< HEAD
 # endTime=864000.,
  endTime=86400.,
+=======
+ endTime=864000.,
+# endTime=86400.,
+# endTime=7200.,
+>>>>>>> main
  chkPtFreq=86400.,
  dumpFreq=0.,
  pChkPtFreq=86400.,
@@ -125,4 +133,5 @@
  hydrogSaltFile='../input/binaries/ICs/PHYS/IC_S.dat',
  uVelInitFile='../input/binaries/ICs/PHYS/IC_U.dat',
  vVelInitFile='../input/binaries/ICs/PHYS/IC_V.dat',
+ mdsioLocalDir='output',
 &END

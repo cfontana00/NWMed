@@ -9,9 +9,16 @@ function mit_mpi_run {
      mit_prex "time mpiexec.hydra -genv I_MPI_FABRICS=shm:ofa -genv I_MPI_DYNAMIC_CONNECTION  0 $_args"
      ;;
   marconi|galileo|g100|hpc-fe1|atos)
-     MPI_RANKS=168
+     MPI_RANKS=112
 #     mit_prex "time mpirun --mca pml ucx --mca btl '^openib' --mca btl_openib_allow_ib 1 -np $MPI_RANKS $_args"
+<<<<<<< HEAD
      mit_prex "time srun -n $MPI_RANKS $_args"
+=======
+#     mit_prex "time numactl --membind=0,1 --cpunodebind=0,1 mpirun -x "UCX_NET_DEVICES=mlx5_0:1" -mca btl openib,self,vader -np $MPI_RANKS $_args"
+#     mit_prex "which mpirun"
+#     mit_prex "export KMP_AFFINITY=granularity=fine,scatter"
+     mit_prex "time mpirun -n $MPI_RANKS $_args"
+>>>>>>> main
      ;;
   *)
      mit_prex "time mpiexec.hydra -genv I_MPI_DYNAMIC_CONNECTION  0 $_args"
