@@ -88,14 +88,9 @@
  &PARM03
  deltaT=200.,
  startTime=0.,
-<<<<<<< HEAD
-# endTime=864000.,
- endTime=86400.,
-=======
  endTime=864000.,
 # endTime=86400.,
 # endTime=7200.,
->>>>>>> main
  chkPtFreq=86400.,
  dumpFreq=0.,
  pChkPtFreq=86400.,

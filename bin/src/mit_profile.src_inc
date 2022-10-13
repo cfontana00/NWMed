@@ -33,13 +33,8 @@ case "$MIT_VERSION" in
 esac
 
 
-<<<<<<< HEAD
-#MIT_DAYS=11
-MIT_DAYS=2
-=======
 MIT_DAYS=11
 #MIT_DAYS=2
->>>>>>> main
 
 function mit_days {
 
