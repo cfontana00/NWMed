@@ -16,7 +16,7 @@ glob_path2=strcat(slash,'ec',slash,'res4',slash,'hpcperm',slash,...
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Bathymetry and Land sea Mask
 
-fileinN=strcat(glob_path,slash,'bathymetry',slash,'E5_2018.dtm');
+fileinN=strcat(glob_path2,slash,'bathymetry',slash,'E5_2018.dtm');
 fidN=netcdf.open(fileinN);
 Ni=ncinfo(fileinN);
 ND={Ni.Dimensions.Name};
@@ -29,7 +29,7 @@ netcdf.close(fidN);
 [LAN,LON]=meshgrid(latN,lonN);
 
 % North side
-fileinS=strcat(glob_path,slash,'bathymetry',slash,'F5_2018.dtm');
+fileinS=strcat(glob_path2,slash,'bathymetry',slash,'F5_2018.dtm');
 fidS=netcdf.open(fileinS);
 Si=ncinfo(fileinS);
 SD={Si.Dimensions.Name};
