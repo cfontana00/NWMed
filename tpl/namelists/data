@@ -64,8 +64,8 @@
  
  globalFiles=.FALSE.,
 #  globalFiles=.TRUE.,
-# useSingleCpuIO=.TRUE.,
- useSingleCpuIO=.FALSE.,
+ useSingleCpuIO=.TRUE.,
+# useSingleCpuIO=.FALSE.,
  
 # debugLevel=4,
  
@@ -128,5 +128,5 @@
  hydrogSaltFile='../input/binaries/ICs/PHYS/IC_S.dat',
  uVelInitFile='../input/binaries/ICs/PHYS/IC_U.dat',
  vVelInitFile='../input/binaries/ICs/PHYS/IC_V.dat',
- mdsioLocalDir='output',
+# mdsioLocalDir='output',
 &END

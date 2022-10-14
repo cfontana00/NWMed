@@ -7,8 +7,12 @@ if isunix
 else
     slash = '\';                                                                                               
 end
-glob_path=strcat(slash,'home',slash,'innocenti',slash,'MITgcm_BFM',slash,...
-          'NWMed',slash,'HOST',slash,'hpc-fe1',slash,'MITgcm_meteo_forcing');
+%glob_path=strcat(slash,'home',slash,'innocenti',slash,'MITgcm_BFM',slash,...
+%          'NWMed',slash,'HOST',slash,'hpc-fe1',slash,'MITgcm_meteo_forcing');
+glob_path=strcat(slash,'home',slash,'itai',slash,'MITgcm_BFM',slash,...
+          'NWMed',slash,'HOST',slash,'atos',slash,'MITgcm_meteo_forcing');
+glob_path2=strcat(slash,'ec',slash,'res4',slash,'hpcperm',slash,...
+          'itai');
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Bathymetry and Land sea Mask
 
@@ -241,8 +245,8 @@ batzNaN(batzNaN==0.0)=NaN;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 date_year=datestr(datenum(date,'yyyymmdd'),'yyyy');
-pathinC=strcat(glob_path,slash,'meteo_nc',slash,date_year,slash); % path wrf NetCDF data
-pathinM=strcat(glob_path,slash,'meteo_txt',slash,date,slash); % path output
+pathinC=strcat(glob_path2,slash,'meteo_nc',slash,date_year,slash); % path wrf NetCDF data
+pathinM=strcat(glob_path2,slash,'meteo_txt',slash,date,slash); % path output
 
 % mask wrf
 %lsm=ncread([pathinM, 'const.nc'],'LAND_GDS10_SFC'); % land-sea mask

@@ -13,9 +13,9 @@ typeset -i errors=0
 
 
 # ### Setup of namelists and initial conditions
-#mit_step_has_phase model B1 && {
-#  mit_exec_and_log mit_model__phase_B1 || errors=$(( $errors + 1 ))
-#}
+mit_step_has_phase model B1 && {
+  mit_exec_and_log mit_model__phase_B1 || errors=$(( $errors + 1 ))
+}
 
 
 # ### Model execution

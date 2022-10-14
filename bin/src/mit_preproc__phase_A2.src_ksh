@@ -33,7 +33,7 @@ wrf_grb=12_arw_ecm_3km.grb
 wrf_grb_00=00_arw_ecm_3km.grb
 wrf_nc=12_arw_ecm_3km.nc
 wrf_nc_00=00_arw_ecm_3km.nc
-WRF_DIR=/OCEANASTORE/progetti/meteop/data/wrf03ecm
+WRF_DIR=/ec/res4/hpcperm/itai/meteo_data
 
 mit_prex "rm $MIT_WRKDIR/MODEL/fc_length.txt"
 FC_LENGTH=$MIT_WRKDIR/MODEL/fc_length.txt
@@ -93,7 +93,6 @@ export LD_LIBRARY_PATH
 export XAPPLRESDIR
 
 $FRC_DIR_MAT/make_meteo_mitgcm_fc_wrf_best $MIT_RUNDATE > $MIT_RUNLOGDIR/mat.log
->>>>>>> main
 
 #TIMELISTFILE=$MIT_WRKDIR/METEO/meteo_timelist.txt
 
