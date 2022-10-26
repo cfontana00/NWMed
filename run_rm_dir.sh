@@ -5,7 +5,7 @@
 #SBATCH --ntasks=112
 #SBATCH -o /home/innocenti/MITgcm_BFM/NWMed/log/rm_dir/log.%j
 #SBATCH -e /home/innocenti/MITgcm_BFM/NWMed/log/rm_dir/err.%j
-#SBATCH --mail-type=FAIL
+#SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=a.innocenti@lamma.toscana.it
 #SBATCH --time=144:00:00
 
