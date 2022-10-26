@@ -11,3 +11,4 @@ archive
 STDOUT*
 test.py
 test_bash.sh
+bin/ecsbatch.log*
