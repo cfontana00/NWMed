@@ -63,6 +63,8 @@ SM_DAYS="$MIT_WRKDIR/POSTPROC/sm_days.txt"
 FC_DAYS="$MIT_WRKDIR/POSTPROC/fc_days.txt"
 
 touch $MIT_WRKDIR/daily.txt
+mit_prex_or_die "more $MIT_WRKDIR/daily.txt"
+mit_prex_or_die "cat $MIT_WRKDIR/daily.txt"
 mit_prex_or_die "cat $MIT_WRKDIR/daily.txt | cut -c -8 | head -7 > $SM_DAYS"
 #cat $MIT_WRKDIR/daily.txt | cut -c -8 | head -7 > $MIT_WRKDIR/temp.txt
 ##mit_prex_or_die "cat $MIT_WRKDIR/daily.txt | cut -c -8 | head -1 > $SM_DAYS "
