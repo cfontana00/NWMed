@@ -19,7 +19,7 @@ MASKFILE=$MIT_WRKDIR/BC_IC/mask.nc
 
 FRC_DIR=$MIT_HOSTDIR/MITgcm_meteo_forcing
 FRC_DIR_MAT=$FRC_DIR/wrf
-FRC_DIR_GRIB=$FRC_DIR/meteo_grib
+FRC_DIR_GRIB=/ec/res4/hpcperm/itai/meteo_grib
 FRC_DIR_NC=/ec/res4/hpcperm/itai/meteo_nc/$DATE_YEAR
 FRC_DIR_TXT=/ec/res4/hpcperm/itai/meteo_txt/$MIT_RUNDATE
 [ -d $FRC_DIR_GRIB ] || mkdir -p $FRC_DIR_GRIB;
@@ -92,7 +92,7 @@ rm $FRC_DIR_GRIB/* $FRC_DIR/temp.grb
 #export LD_LIBRARY_PATH
 #export XAPPLRESDIR
 
-MCRROOT=/home/itai/MCR_R2012b_glnxa64_installer/v80/
+MCRROOT=/ec/res4/hpcperm/itai/MCR_R2012b_glnxa64_installer/v80/
 MCRJRE=${MCRROOT}/sys/java/jre/glnxa64/jre/lib/amd64
 LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${MCRROOT}/runtime/glnxa64
 LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${MCRROOT}/bin/glnxa64

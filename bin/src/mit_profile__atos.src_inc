@@ -50,6 +50,7 @@ mit_batch_prex "module load netcdf4-parallel"
 mit_batch_prex "module load gsl"
 mit_batch_prex "module load nco"
 mit_batch_prex "module load python3"
+mit_batch_prex "module load ecmwf-toolbox"
 mit_batch_prex "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$GSL_DIR/lib"
 mit_batch_prex "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$NETCDF4_DIR/lib"
 
