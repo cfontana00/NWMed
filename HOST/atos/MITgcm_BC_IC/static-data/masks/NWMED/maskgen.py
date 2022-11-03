@@ -18,7 +18,8 @@ def arguments():
 
 args = arguments()
 import numpy as np
-import scipy.io.netcdf as NC
+#import scipy.io.netcdf as NC
+import scipy.io as NC
 
 bathyfile = args.bathymetry
 maskfile  = args.outputfile

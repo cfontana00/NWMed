@@ -34,6 +34,11 @@ def argument():
                                 default = None,
                                 required = True
                                 )
+    parser.add_argument(   '--length',"-l",
+                                type = str,
+                                default = '71',
+                                required = False
+                                )
     return parser.parse_args()
 
 args = argument()
@@ -73,10 +78,13 @@ OUTDIR=addsep(args.outputdir)
 RUNDATE=args.rundate
 dateformat="%Y%m%d-%H:%M:%S"
 
+fc_length=int(args.length)
 
 rundate_dt = datetime.strptime(RUNDATE,"%Y%m%d")
-datestart = (rundate_dt - DL.relativedelta(  days=7)).strftime(dateformat)
-dateend   = (rundate_dt + DL.relativedelta(hours=71)).strftime(dateformat)
+#datestart = (rundate_dt - DL.relativedelta(  days=7)).strftime(dateformat)
+datestart = (rundate_dt).strftime(dateformat)
+#dateend   = (rundate_dt + DL.relativedelta(hours=71)).strftime(dateformat)
+dateend   = (rundate_dt + DL.relativedelta(hours=fc_length)).strftime(dateformat)
 #dateend   = (rundate_dt - DL.relativedelta(days=7) + DL.relativedelta(hours=24)).strftime(dateformat)
 #dateend = (rundate_dt - DL.relativedelta(  days=1)).strftime(dateformat)
 
@@ -85,6 +93,7 @@ VARLIST= file2stringlist(args.varlist)
 
 timelist=DL.getTimeList(datestart, dateend, hours=1)
 timestep = 200 #s, hardcoded
+offset = 24*7 # hardcoded, number of outputs to skip (it depends on datestart; if datestart=rundate - 7 => offset = 0)
 
 TimeSteps_in_h = 3600/timestep
 #TimeSteps_in_h = 1
@@ -95,7 +104,7 @@ local_INDEXES = ALL_INDEXES[rank::nranks]
 for var in VARLIST:    
     for it in local_INDEXES:
         t = timelist[it]
-        inputfile = "%s%s.%010d.data" %(INPUTDIR,var, (it+1)*TimeSteps_in_h)
+        inputfile = "%s%s.%010d.data" %(INPUTDIR,var, (it+1+offset)*TimeSteps_in_h)
         outfile   = "%save.%s.%s.nc"  %(OUTDIR,t.strftime(dateformat),var)
         print(outfile)
         M3d = readFrame_from_file(inputfile, 0, TheMask.shape)
