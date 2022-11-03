@@ -86,7 +86,7 @@
 
 # Time stepping parameters
  &PARM03
- deltaT=200.,
+ deltaT=150.,
  startTime=0.,
  endTime=864000.,
 # endTime=86400.,

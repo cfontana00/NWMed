@@ -127,3 +127,4 @@ for p in mb._MapBuilder__plotlist:
             #import sys
             #sys.exit()
 
+MPI.Finalize()

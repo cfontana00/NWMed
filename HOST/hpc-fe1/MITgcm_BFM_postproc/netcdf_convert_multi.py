@@ -92,7 +92,7 @@ TheMask = Mask(args.maskfile)
 VARLIST= file2stringlist(args.varlist)
 
 timelist=DL.getTimeList(datestart, dateend, hours=1)
-timestep = 200 #s, hardcoded
+timestep = 150 #s, hardcoded
 offset = 24*7 # hardcoded, number of outputs to skip (it depends on datestart; if datestart=rundate - 7 => offset = 0)
 
 TimeSteps_in_h = 3600/timestep
@@ -114,3 +114,4 @@ for var in VARLIST:
         M3d[~TheMask.mask] = 1.e+20
         netcdf4.write_3d_file(M3d, var, outfile, TheMask, compression=True)
 
+MPI.Finalize()
