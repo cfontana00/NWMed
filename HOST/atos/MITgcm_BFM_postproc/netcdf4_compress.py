@@ -183,3 +183,4 @@ for filename in FILELIST[rank::nranks]:
     if prefix in ["RST_after", "RSTbefore"]:
         WRITE_RST_DA(filename, outfile, var, args.cutlevel)
 
+MPI.Finalize()

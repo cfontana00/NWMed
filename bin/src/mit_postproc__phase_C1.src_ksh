@@ -72,11 +72,11 @@ mit_prex_or_die "cat $MIT_WRKDIR/daily.txt | cut -c -8 | head -7 > $SM_DAYS"
 mit_prex_or_die "cat $MIT_WRKDIR/daily.txt | cut -c -8 | tail -4 | head -${fc_num_days}  > $FC_DAYS "
 
 ##mit_prex_or_die "mpirun python $MIT_POSTPROCDIR/prodotti_bio.py -i $NETCDF_DIR -o $PRODUCTS -d sm -b $MIT_RUNDATE -m $MASKFILE -t $SM_DAYS"
-mit_prex_or_die "srun -mca oob_base_verbose 100 -n 15 python -m mpi4py $MIT_POSTPROCDIR/prodotti_bio.py -i $NETCDF_DIR -o $PRODUCTS -d fc -b $MIT_RUNDATE -m $MASKFILE -t $FC_DAYS"
+mit_prex_or_die "srun -n 15 python -m mpi4py $MIT_POSTPROCDIR/prodotti_bio.py -i $NETCDF_DIR -o $PRODUCTS -d fc -b $MIT_RUNDATE -m $MASKFILE -t $FC_DAYS"
 
 
 ##mit_prex_or_die "mpirun python $MIT_POSTPROCDIR/prodotti_phys.py -i $NETCDF_DIR -o $PRODUCTS -d sm -b $MIT_RUNDATE -m $MASKFILE -t $SM_DAYS"
-mit_prex_or_die "srun -mca oob_base_verbose 100 -n 9 python -m mpi4py $MIT_POSTPROCDIR/prodotti_phys.py -i $NETCDF_DIR -o $PRODUCTS -d fc -b $MIT_RUNDATE -m $MASKFILE -t $FC_DAYS"
+mit_prex_or_die "srun -n 9 python -m mpi4py $MIT_POSTPROCDIR/prodotti_phys.py -i $NETCDF_DIR -o $PRODUCTS -d fc -b $MIT_RUNDATE -m $MASKFILE -t $FC_DAYS"
 
 mit_date > $PRODUCTS/timestamp
 

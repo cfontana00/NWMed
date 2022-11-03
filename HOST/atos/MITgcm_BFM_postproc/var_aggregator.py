@@ -119,3 +119,5 @@ for N1pfile in SingleVar_filelist[rank::nranks]:
         else:
            chlvar = 'P_l'
         G.writeChlSup(chl3dfile, chl2dfile,chlvar)
+
+MPI.Finalize()
