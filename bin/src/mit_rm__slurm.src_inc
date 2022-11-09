@@ -33,7 +33,7 @@ function mit_rm_mpi_tasks {
 }
 
 function mit_rm_mpi_tasks_post {
-  MIT_CORES_PER_NODE_POST=28
+  MIT_CORES_PER_NODE_POST=128
   typeset -i _tasks="$1"
   typeset -i _full_nodes=$(( $_tasks / $MIT_CORES_PER_NODE_POST))
   typeset -i _part_cores=$(( $_tasks - ( $_full_nodes * $MIT_CORES_PER_NODE_POST ) ))

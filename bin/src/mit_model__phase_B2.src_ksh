@@ -26,6 +26,8 @@ mit_mpi_run "$MIT_BINDIR/mitgcmuv_168" || {
   errors=$(( $errors + 1 ))
 }
 
+mit_prex "cp $wrkdir/STDOUT.0000 $MIT_RUNLOGDIR/STDOUT.0000.${MIT_RUNID}"
+
 mit_exit "$errors"
 
 

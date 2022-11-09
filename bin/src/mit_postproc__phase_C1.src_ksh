@@ -105,7 +105,8 @@ mit_prex_or_die "rm -rf $NETCDF_DIR"
 mit_prex_or_die "rm -rf $TMPDIR"
 mit_prex_or_die "rm -rf $OUTPUTDIR"
 #mit_prex_or_die "cp -r $PRODUCTS /OCEANASTORE/progetti/sharemed/mitgcm/NWMed/webGIS/products_$MIT_RUNDATE"
-mit_prex_or_die "mv $PRODUCTS/*fc-v01.nc /ec/res4/hpcperm/itai/MITgcm_products/2022/"
+mit_mkdir "/ec/res4/hpcperm/itai/MITgcm_products/2022/$MIT_RUNDATE"
+mit_prex_or_die "mv $PRODUCTS/*fc-v01.nc /ec/res4/hpcperm/itai/MITgcm_products/2022/$MIT_RUNDATE/"
 mit_prex_or_die "rm -rf $PRODUCTS"
 
 #mit_prex_or_die "cp -r /OCEANASTORE/progetti/sharemed/mitgcm/NWMed/2022 /OCEANASTORE/progetti/sharemed/mitgcm/NWMed/webGIS/products_$MIT_RUNDATE"
@@ -114,6 +115,9 @@ mit_prex_or_die "rm -rf $PRODUCTS"
 #mit_prex_or_die "rsync -rv /OCEANASTORE/progetti/sharemed/mitgcm/NWMed/webGIS/products_$MIT_RUNDATE ainnocenti@charon.osupytheas.fr:/mnt/SHAREMED/Ligurian/"
 
 mit_prex_or_die "touch $MIT_POSTPROC/postproc_done.txt"
+
+DATENEXT=$( date -d "${MIT_RUNDATE}  +  1  days " +%Y%m%d )
+echo "$DATENEXT" > $I_MIT_HOME/date.txt
 
 mit_exit "$errors"
 

@@ -9,6 +9,9 @@ mit_set_run
 # start
 mit_start
 mit_prex "source $MIT_VENV_1/bin/activate"
+
+mit_prex "rm $I_MIT_HOME/date.txt"
+
 export PYTHONPATH=$PYTHONPATH:$MIT_BITSEA
 #mit_prex "cd $MIT_BC_IC_FROM_OGSTM_DIR"
 typeset -i exit_code=0
