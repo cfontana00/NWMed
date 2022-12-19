@@ -55,7 +55,8 @@ mit_prex_or_die "srun -n 1 python -m mpi4py $MIT_POSTPROCDIR/mask_gen.py -i $MIT
 
 VARLIST=$MIT_ETCDIR/static-data/POSTPROC/merging_varlist
 VARDESCRIPTOR=$MIT_ETCDIR/static-data/POSTPROC/VarDescriptor.xml
-mit_prex_or_die "srun -n 72 python -m mpi4py $MIT_POSTPROCDIR/netcdf_convert.py -i $RUNDIR -o $NETCDF_DIR -d $MIT_RUNDATE -m $MASKFILE -v $VARLIST -l $fc_hours"
+#mit_prex_or_die "srun -n 72 python -m mpi4py $MIT_POSTPROCDIR/netcdf_convert.py -i $RUNDIR -o $NETCDF_DIR -d $MIT_RUNDATE -m $MASKFILE -v $VARLIST -l $fc_hours"
+mit_prex_or_die "srun -n 72 python -m mpi4py $MIT_POSTPROCDIR/netcdf_convert.py -i $RUNDIR -o $NETCDF_DIR -d $MIT_RUNDATE -m $MASKFILE -v $VARLIST"
 mit_prex_or_die "srun -n 72 python -m mpi4py $MIT_POSTPROCDIR/var_aggregator.py -l ave*N1p.nc -i $NETCDF_DIR -t $TMPDIR -m $MASKFILE -d $VARDESCRIPTOR"
 mit_prex_or_die "srun python -m mpi4py $MIT_POSTPROCDIR/netcdf4_compress.py -i $TMPDIR -o $NETCDF_DIR -l '*.nc' "
 
@@ -69,14 +70,17 @@ mit_prex_or_die "cat $MIT_WRKDIR/daily.txt | cut -c -8 | head -7 > $SM_DAYS"
 #cat $MIT_WRKDIR/daily.txt | cut -c -8 | head -7 > $MIT_WRKDIR/temp.txt
 ##mit_prex_or_die "cat $MIT_WRKDIR/daily.txt | cut -c -8 | head -1 > $SM_DAYS "
 ##mit_prex_or_die "cat $MIT_WRKDIR/daily.txt | cut -c -8 | head -6 > $SM_DAYS "
-mit_prex_or_die "cat $MIT_WRKDIR/daily.txt | cut -c -8 | tail -4 | head -${fc_num_days}  > $FC_DAYS "
+#mit_prex_or_die "cat $MIT_WRKDIR/daily.txt | cut -c -8 | tail -4 | head -${fc_num_days}  > $FC_DAYS "
+mit_prex_or_die "cat $MIT_WRKDIR/daily.txt | cut -c -8 | tail -8 | head -7  > $FC_DAYS "
 
 ##mit_prex_or_die "mpirun python $MIT_POSTPROCDIR/prodotti_bio.py -i $NETCDF_DIR -o $PRODUCTS -d sm -b $MIT_RUNDATE -m $MASKFILE -t $SM_DAYS"
-mit_prex_or_die "srun -n 15 python -m mpi4py $MIT_POSTPROCDIR/prodotti_bio.py -i $NETCDF_DIR -o $PRODUCTS -d fc -b $MIT_RUNDATE -m $MASKFILE -t $FC_DAYS"
+#mit_prex_or_die "srun -n 15 python -m mpi4py $MIT_POSTPROCDIR/prodotti_bio.py -i $NETCDF_DIR -o $PRODUCTS -d fc -b $MIT_RUNDATE -m $MASKFILE -t $FC_DAYS"
+mit_prex_or_die "srun -n 35 python -m mpi4py $MIT_POSTPROCDIR/prodotti_bio.py -i $NETCDF_DIR -o $PRODUCTS -d fc -b $MIT_RUNDATE -m $MASKFILE -t $FC_DAYS"
 
 
 ##mit_prex_or_die "mpirun python $MIT_POSTPROCDIR/prodotti_phys.py -i $NETCDF_DIR -o $PRODUCTS -d sm -b $MIT_RUNDATE -m $MASKFILE -t $SM_DAYS"
-mit_prex_or_die "srun -n 9 python -m mpi4py $MIT_POSTPROCDIR/prodotti_phys.py -i $NETCDF_DIR -o $PRODUCTS -d fc -b $MIT_RUNDATE -m $MASKFILE -t $FC_DAYS"
+#mit_prex_or_die "srun -n 9 python -m mpi4py $MIT_POSTPROCDIR/prodotti_phys.py -i $NETCDF_DIR -o $PRODUCTS -d fc -b $MIT_RUNDATE -m $MASKFILE -t $FC_DAYS"
+mit_prex_or_die "srun -n 21 python -m mpi4py $MIT_POSTPROCDIR/prodotti_phys.py -i $NETCDF_DIR -o $PRODUCTS -d fc -b $MIT_RUNDATE -m $MASKFILE -t $FC_DAYS"
 
 mit_date > $PRODUCTS/timestamp
 
@@ -105,8 +109,8 @@ mit_prex_or_die "rm -rf $NETCDF_DIR"
 mit_prex_or_die "rm -rf $TMPDIR"
 mit_prex_or_die "rm -rf $OUTPUTDIR"
 #mit_prex_or_die "cp -r $PRODUCTS /OCEANASTORE/progetti/sharemed/mitgcm/NWMed/webGIS/products_$MIT_RUNDATE"
-mit_mkdir "/ec/res4/hpcperm/itai/MITgcm_products/2022/$MIT_RUNDATE"
-mit_prex_or_die "mv $PRODUCTS/*fc-v01.nc /ec/res4/hpcperm/itai/MITgcm_products/2022/$MIT_RUNDATE/"
+mit_mkdir "/ec/res4/scratch/itai/MITgcm_products/2022/$MIT_RUNDATE"
+mit_prex_or_die "mv $PRODUCTS/*fc-v01.nc /ec/res4/scratch/itai/MITgcm_products/2022/$MIT_RUNDATE/"
 mit_prex_or_die "rm -rf $PRODUCTS"
 
 #mit_prex_or_die "cp -r /OCEANASTORE/progetti/sharemed/mitgcm/NWMed/2022 /OCEANASTORE/progetti/sharemed/mitgcm/NWMed/webGIS/products_$MIT_RUNDATE"
@@ -116,7 +120,8 @@ mit_prex_or_die "rm -rf $PRODUCTS"
 
 mit_prex_or_die "touch $MIT_POSTPROC/postproc_done.txt"
 
-DATENEXT=$( date -d "${MIT_RUNDATE}  +  1  days " +%Y%m%d )
+#DATENEXT=$( date -d "${MIT_RUNDATE}  +  1  days " +%Y%m%d )
+DATENEXT=$( date -d "${MIT_RUNDATE}  +  7  days " +%Y%m%d )
 echo "$DATENEXT" > $I_MIT_HOME/date.txt
 
 mit_exit "$errors"

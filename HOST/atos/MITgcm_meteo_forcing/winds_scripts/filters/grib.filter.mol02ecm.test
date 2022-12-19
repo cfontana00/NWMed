@@ -1,0 +1,33 @@
+if (numberOfColumns==567 &&
+    numberOfRows==417 &&
+    latitudeOfFirstGridPointInDegrees==34.5 &&
+    longitudeOfFirstGridPointInDegrees==2.5 &&
+    latitudeOfLastGridPointInDegrees==46.98 &&
+    longitudeOfLastGridPointInDegrees==19.48 &&
+    jDirectionIncrementInDegrees==0.03 &&
+    iDirectionIncrementInDegrees==0.03)
+{
+   if ((level==0 &&
+        (indicatorOfParameter==2 ||
+         indicatorOfParameter==111 ||
+         indicatorOfParameter==112 ||
+         indicatorOfParameter==61 ||
+         indicatorOfParameter==71)) ||
+       (level==2 &&
+        (indicatorOfParameter==11 ||
+         indicatorOfParameter==52)) ||
+       (level==10 &&
+        (indicatorOfParameter==33 ||
+         indicatorOfParameter==34)))
+   {
+      write;
+   }
+
+#   if ((level==0 &&
+#        (indicatorOfParameter==112)))
+#   {
+#      set shortName = "lwavr";
+#      write;
+#   }
+
+}

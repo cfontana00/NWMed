@@ -20,15 +20,10 @@ DATE_YEAR=$( date -d "${MIT_RUNDATE} " +%Y )
 MASKFILE=$MIT_WRKDIR/BC_IC/mask.nc
 
 FRC_DIR=$MIT_HOSTDIR/MITgcm_meteo_forcing
-#FRC_DIR_MAT=$FRC_DIR/wrf
-#FRC_DIR_GRIB=/ec/res4/hpcperm/itai/meteo_grib
-#FRC_DIR_NC=/ec/res4/hpcperm/itai/meteo_nc/$DATE_YEAR
-#FRC_DIR_TXT=/ec/res4/hpcperm/itai/meteo_txt/$MIT_RUNDATE
-FRC_DIR_MAT=$FRC_DIR/mol
-FRC_DIR_GRIB=/ec/res4/scratch/itai/meteo_grib
-FRC_DIR_NC=/ec/res4/scratch/itai/meteo_nc/$DATE_YEAR
-FRC_DIR_TXT=/ec/res4/scratch/itai/meteo_txt/$MIT_RUNDATE
-
+FRC_DIR_MAT=$FRC_DIR/wrf
+FRC_DIR_GRIB=/ec/res4/hpcperm/itai/meteo_grib
+FRC_DIR_NC=/ec/res4/hpcperm/itai/meteo_nc/$DATE_YEAR
+FRC_DIR_TXT=/ec/res4/hpcperm/itai/meteo_txt/$MIT_RUNDATE
 [ -d $FRC_DIR_GRIB ] || mkdir -p $FRC_DIR_GRIB;
 [ -d $FRC_DIR_NC ] || mkdir -p $FRC_DIR_NC;
 [ -d $FRC_DIR_TXT ] || mkdir -p $FRC_DIR_TXT;
@@ -36,16 +31,11 @@ FRC_DIR_TXT=/ec/res4/scratch/itai/meteo_txt/$MIT_RUNDATE
 #wrf_nc=00_arw_ecm_3km.nc
 
 # per usare forecast wrf delle 12
-#wrf_grb=12_arw_ecm_3km.grb
-#wrf_grb_00=00_arw_ecm_3km.grb
-#wrf_nc=12_arw_ecm_3km.nc
-#wrf_nc_00=00_arw_ecm_3km.nc
-#WRF_DIR=/ec/res4/hpcperm/itai/meteo_data
-mol_grb=12_mol02ecm.grb
-mol_grb_00=00_mol02ecm.grb
-mol_nc=12_mol02ecm.nc
-mol_nc_00=00_mol02ecm.nc
-MOL_DIR=/ec/res4/scratch/itai/meteo_data/mol02ecm
+wrf_grb=12_arw_ecm_3km.grb
+wrf_grb_00=00_arw_ecm_3km.grb
+wrf_nc=12_arw_ecm_3km.nc
+wrf_nc_00=00_arw_ecm_3km.nc
+WRF_DIR=/ec/res4/hpcperm/itai/meteo_data
 
 mit_prex "rm $MIT_WRKDIR/MODEL/fc_length.txt"
 FC_LENGTH=$MIT_WRKDIR/MODEL/fc_length.txt
@@ -57,17 +47,17 @@ do
     DATE_I=$( date -d "${MIT_RUNDATE}  - 3 days +  ${i} days  " +%Y%m%d )
     echo $i
     echo $DATE_I
-    ifile=$DATE_I$mol_grb
-    ofile=$DATE_I$mol_nc
-    if [ -f $MOL_DIR/$ifile ]; then
+    ifile=$DATE_I$wrf_grb
+    ofile=$DATE_I$wrf_nc
+    if [ -f $WRF_DIR/$ifile ]; then
 	echo "file $ifile exist"
 #	if [ $i -eq 1 ]; then
 #	    echo "3" > $FC_LENGTH
 #        fi
     else
-	ifile=$DATE_I$mol_grb_00
-	ofile=$DATE_I$mol_nc_00
-	if [ -f $MOL_DIR/$ifile ]; then
+	ifile=$DATE_I$wrf_grb_00
+	ofile=$DATE_I$wrf_nc_00
+	if [ -f $WRF_DIR/$ifile ]; then
 	    echo "using fc file of 00h for day $DATE_I"
 #	    if [ $i -eq 1 ]; then
 #		echo "2" > $FC_LENGTH
@@ -82,8 +72,8 @@ do
     if [ -f $FRC_DIR_NC/$ofile ]; then
 	echo "file $ofile already present"
     else
-	cp $MOL_DIR/$ifile $FRC_DIR_GRIB
-	grib_filter -o $FRC_DIR/temp.grb $FRC_DIR/winds_scripts/filters/grib.filter.mol02ecm.test $FRC_DIR_GRIB/$ifile
+	cp $WRF_DIR/$ifile $FRC_DIR_GRIB
+	grib_filter -o $FRC_DIR/temp.grb $FRC_DIR/winds_scripts/filters/grib.filter.wrf03ecm.test $FRC_DIR_GRIB/$ifile
 	grib_to_netcdf -D NC_FLOAT $FRC_DIR/temp.grb -o $FRC_DIR_NC/$ofile
 	rm $FRC_DIR/temp.grb
     fi
@@ -118,7 +108,7 @@ XAPPLRESDIR=${MCRROOT}/X11/app-defaults
 export LD_LIBRARY_PATH
 export XAPPLRESDIR
 
-$FRC_DIR_MAT/make_meteo_mitgcm_fc_mol_hindcast $MIT_RUNDATE > $MIT_RUNLOGDIR/mat.log
+$FRC_DIR_MAT/make_meteo_mitgcm_fc_wrf_hindcast $MIT_RUNDATE > $MIT_RUNLOGDIR/mat.log
 
 #TIMELISTFILE=$MIT_WRKDIR/METEO/meteo_timelist.txt
 

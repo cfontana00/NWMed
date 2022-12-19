@@ -84,7 +84,8 @@ rundate_dt = datetime.strptime(RUNDATE,"%Y%m%d")
 #datestart = (rundate_dt - DL.relativedelta(  days=7)).strftime(dateformat)
 datestart = (rundate_dt).strftime(dateformat)
 #dateend   = (rundate_dt + DL.relativedelta(hours=71)).strftime(dateformat)
-dateend   = (rundate_dt + DL.relativedelta(hours=fc_length)).strftime(dateformat)
+#dateend   = (rundate_dt + DL.relativedelta(hours=fc_length)).strftime(dateformat)
+dateend   = (rundate_dt + DL.relativedelta(days=10) - DL.relativedelta(hours=1)).strftime(dateformat)
 #dateend   = (rundate_dt - DL.relativedelta(days=7) + DL.relativedelta(hours=24)).strftime(dateformat)
 #dateend = (rundate_dt - DL.relativedelta(  days=1)).strftime(dateformat)
 
@@ -92,8 +93,9 @@ TheMask = Mask(args.maskfile)
 VARLIST= file2stringlist(args.varlist)
 
 timelist=DL.getTimeList(datestart, dateend, hours=1)
-timestep = 120 #s, hardcoded
-offset = 24*7 # hardcoded, number of outputs to skip (it depends on datestart; if datestart=rundate - 7 => offset = 0)
+timestep = 100 #s, hardcoded
+#offset = 24*7 # hardcoded, number of outputs to skip (it depends on datestart; if datestart=rundate - 7 => offset = 0)
+offset = 0 # hardcoded, number of outputs to skip (it depends on datestart; if datestart=rundate - 7 => offset = 0)
 
 TimeSteps_in_h = 3600/timestep
 #TimeSteps_in_h = 1

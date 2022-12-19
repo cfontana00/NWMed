@@ -113,7 +113,8 @@ mit_stage_in    "$wrkdir/run"                              \
 errors=$(( $errors + $? )) 
 }
 
-START_DATE=$( date -d "${MIT_RUNDATE}  -  7  days " +%Y%m%d ) 
+#START_DATE=$( date -d "${MIT_RUNDATE}  -  7  days " +%Y%m%d )
+START_DATE=$( date -d "${MIT_RUNDATE} " +%Y%m%d )
 
 sed -e "s%@@START_DATE@@%${START_DATE}%g" $nml_dir/data.cal.tpl > $wrkdir/run/data.cal
 

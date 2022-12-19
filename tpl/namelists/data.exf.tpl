@@ -31,21 +31,21 @@
  vwindstartdate2   = 000000,
  vwindperiod       = 3600.0,
 
-# swfluxstartdate1  = @@START_DATE@@,
-# swfluxstartdate2  = 000000,
-# swfluxperiod      = 3600.0,
+ swfluxstartdate1  = @@START_DATE@@,
+ swfluxstartdate2  = 000000,
+ swfluxperiod      = 3600.0,
 
-# lwfluxstartdate1  = @@START_DATE@@,
-# lwfluxstartdate2  = 000000,
-# lwfluxperiod      = 3600.0,
+ lwfluxstartdate1  = @@START_DATE@@,
+ lwfluxstartdate2  = 000000,
+ lwfluxperiod      = 3600.0,
 
- swdownstartdate1  = @@START_DATE@@,
- swdownstartdate2  = 000000,
- swdownperiod      = 3600.0,
+# swdownstartdate1  = @@START_DATE@@,
+# swdownstartdate2  = 000000,
+# swdownperiod      = 3600.0,
 
- lwdownstartdate1  = @@START_DATE@@,
- lwdownstartdate2  = 000000,
- lwdownperiod      = 3600.0,
+# lwdownstartdate1  = @@START_DATE@@,
+# lwdownstartdate2  = 000000,
+# lwdownperiod      = 3600.0,
 
  apressurestartdate1  = @@START_DATE@@,
  apressurestartdate2  = 000000,
@@ -66,8 +66,10 @@
  aqhfile       = '../input/binaries/meteo/BC_aqh',
  uwindfile     = '../input/binaries/meteo/BC_uwind',
  vwindfile     = '../input/binaries/meteo/BC_vwind',
- swdownfile    = '../input/binaries/meteo/BC_swdown',
- lwdownfile    = '../input/binaries/meteo/BC_lwdown',
+# swdownfile    = '../input/binaries/meteo/BC_swdown',
+# lwdownfile    = '../input/binaries/meteo/BC_lwdown',
+ swfluxfile    = '../input/binaries/meteo/BC_swflux',
+ lwfluxfile    = '../input/binaries/meteo/BC_lwflux',
  apressurefile = '../input/binaries/meteo/BC_apress',
  precipfile    = '../input/binaries/meteo/BC_precip',
 # runofffile    = '../input/binaries/...',
@@ -86,8 +88,8 @@
 # exf_inscal_runoff   =  1.0,
  exf_inscal_uwind   =  1.0,
  exf_inscal_vwind   =  1.0,
- exf_inscal_swflux   =  0.9,
- exf_inscal_lwflux   =  1.2,
+# exf_inscal_swflux   =  0.9,
+# exf_inscal_lwflux   =  1.2,
 # output scaling factors
  &END
 
