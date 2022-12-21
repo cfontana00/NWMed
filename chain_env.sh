@@ -9,3 +9,5 @@ export MIT_WORKDIR=/ec/res4/scratch/itai/MITgcm_BFM/WORK_NWMed
 export MIT_VERSION_NUMBER=1
 export MIT_STAGE=devel
 alias mitcd="cd $MIT_HOME ; pwd"
+
+export PATH=$HOME/jq-1.6:$PATH
