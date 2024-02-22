@@ -12,3 +12,4 @@ STDOUT*
 test.py
 test_bash.sh
 bin/ecsbatch.log*
+etc/motu-config/motu_downloader.json
