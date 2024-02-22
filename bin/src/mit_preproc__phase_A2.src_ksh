@@ -21,13 +21,13 @@ MASKFILE=$MIT_WRKDIR/BC_IC/mask.nc
 
 FRC_DIR=$MIT_HOSTDIR/MITgcm_meteo_forcing
 #FRC_DIR_MAT=$FRC_DIR/wrf
-#FRC_DIR_GRIB=/ec/res4/hpcperm/itai/meteo_grib
-#FRC_DIR_NC=/ec/res4/hpcperm/itai/meteo_nc/$DATE_YEAR
-#FRC_DIR_TXT=/ec/res4/hpcperm/itai/meteo_txt/$MIT_RUNDATE
+#FRC_DIR_GRIB=/ec/res4/hpcperm/itfc/meteo_grib
+#FRC_DIR_NC=/ec/res4/hpcperm/itfc/meteo_nc/$DATE_YEAR
+#FRC_DIR_TXT=/ec/res4/hpcperm/itfc/meteo_txt/$MIT_RUNDATE
 FRC_DIR_MAT=$FRC_DIR/mol
-FRC_DIR_GRIB=/ec/res4/scratch/itai/meteo_grib
-FRC_DIR_NC=/ec/res4/scratch/itai/meteo_nc/$DATE_YEAR
-FRC_DIR_TXT=/ec/res4/scratch/itai/meteo_txt/$MIT_RUNDATE
+FRC_DIR_GRIB=/ec/res4/scratch/itfc/meteo_grib
+FRC_DIR_NC=/ec/res4/scratch/itfc/meteo_nc/$DATE_YEAR
+FRC_DIR_TXT=/ec/res4/scratch/itfc/meteo_txt/$MIT_RUNDATE
 
 [ -d $FRC_DIR_GRIB ] || mkdir -p $FRC_DIR_GRIB;
 [ -d $FRC_DIR_NC ] || mkdir -p $FRC_DIR_NC;
@@ -40,12 +40,12 @@ FRC_DIR_TXT=/ec/res4/scratch/itai/meteo_txt/$MIT_RUNDATE
 #wrf_grb_00=00_arw_ecm_3km.grb
 #wrf_nc=12_arw_ecm_3km.nc
 #wrf_nc_00=00_arw_ecm_3km.nc
-#WRF_DIR=/ec/res4/hpcperm/itai/meteo_data
+#WRF_DIR=/ec/res4/hpcperm/itfc/meteo_data
 mol_grb=12_mol02ecm.grb
 mol_grb_00=00_mol02ecm.grb
 mol_nc=12_mol02ecm.nc
 mol_nc_00=00_mol02ecm.nc
-MOL_DIR=/ec/res4/scratch/itai/meteo_data/mol02ecm
+MOL_DIR=/ec/res4/scratch/itfc/meteo_data/mol02ecm
 
 mit_prex "rm $MIT_WRKDIR/MODEL/fc_length.txt"
 FC_LENGTH=$MIT_WRKDIR/MODEL/fc_length.txt
@@ -106,7 +106,7 @@ rm $FRC_DIR_GRIB/* $FRC_DIR/temp.grb
 #export LD_LIBRARY_PATH
 #export XAPPLRESDIR
 
-MCRROOT=/ec/res4/hpcperm/itai/MCR_R2012b_glnxa64_installer/v80/
+MCRROOT=/ec/res4/hpcperm/itfc/MCR_R2012b_glnxa64_installer/v80/
 MCRJRE=${MCRROOT}/sys/java/jre/glnxa64/jre/lib/amd64
 LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${MCRROOT}/runtime/glnxa64
 LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${MCRROOT}/bin/glnxa64

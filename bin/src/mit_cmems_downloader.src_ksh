@@ -16,6 +16,8 @@
 typeset -r VERSION="1.1";
 
 typeset -r PYTHON="python3";
+typeset -r CMEMS=$I_MIT_HOME/HOST/"copernicusmarine";
+
 
 typeset CONF_FILE;
 typeset RUN_DATE;
@@ -206,6 +208,10 @@ fi
 TEMP_FILE=$(mktemp);
 
 trap "rm -f ${TEMP_FILE}" EXIT
+
+
+echo "=> TEST"
+$CMEMS --version
 
 seq 0 $(($(getConfItem "services | length") - 1)) |\
 while read SERVICE_INDEX

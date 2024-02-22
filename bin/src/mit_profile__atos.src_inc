@@ -24,8 +24,8 @@ MIT_CORES_PER_NODE=128
 MIT_DEFAULT_WALL_CLOCK_LIMIT=06:00:00			# Default wall clock limit [[hh:]mm:]ss
 MIT_DEFAULT_WALL_CLOCK_LIMIT_SER=04:00:00			# Default wall clock limit [[hh:]mm:]ss
 MIT_DEFAULT_WALL_CLOCK_LIMIT_PAR=24:00:00			# Default wall clock limit [[hh:]mm:]ss
-MIT_DEFAULT_TASKS=168					# Default tasks' number WARNING: 1 node is not enough
-MIT_DEFAULT_TASKS_POST=72                               # Default tasks' number for postprocessing
+MIT_DEFAULT_TASKS=95					# Default tasks' number WARNING: 1 node is not enough
+MIT_DEFAULT_TASKS_POST=36                               # Default tasks' number for postprocessing
 #MIT_DEFAULT_QUEUE="g100_meteo_prod"                                      # Default queue
 #MIT_DEFAULT_QUEUE_PAR="g100_meteo_prod"                                  # Default queue par
 #MIT_DEFAULT_QUEUE_SER="serial"                                 # Default queue ser
@@ -46,13 +46,17 @@ MIT_DEFAULT_QOS="np"
 mit_batch_prex "module purge"
 mit_batch_prex "module load prgenv/intel"
 mit_batch_prex "module load intel-mpi"
+#mit_batch_prex "module load prgenv/gnu"
+#mit_batch_prex "module load openmpi"
 mit_batch_prex "module load netcdf4-parallel"
 mit_batch_prex "module load gsl"
 mit_batch_prex "module load nco"
-mit_batch_prex "module load python3"
-mit_batch_prex "module load ecmwf-toolbox"
+mit_batch_prex "module load hdf5"
+#mit_batch_prex "module load python3"
+#mit_batch_prex "module load forge"
 mit_batch_prex "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$GSL_DIR/lib"
 mit_batch_prex "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$NETCDF4_DIR/lib"
+mit_batch_prex "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$OPENMPI_DIR/fortran-gnu/lib"
 
 mit_batch_prex "ulimit -s unlimited"
 
